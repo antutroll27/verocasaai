@@ -11,9 +11,9 @@ function Listing() {
   return (
     <div>
       <div className="mt-20">  
-      <h2 className="text-5xl font-bold text-colors-custom-lightpurple mb-4">Never run out </h2>
-      <h2 className="text-5xl font-bold text-colors-custom-lightpurple mb-4">of Ideas </h2>
-      <h2 className="text-5xl font-bold text-colors-custom-purple">{user?.fullName}</h2>
+      <h2 className="text-6xl font-bold text-colors-custom-lightpurple mb-4">Never run out </h2>
+      <h2 className="text-6xl font-bold text-colors-custom-lightpurple mb-4">of Ideas </h2>
+      <h2 className="text-6xl font-bold text-colors-custom-purple">{user?.fullName}</h2>
       </div>
 
       {userRoomList?.length === 0 ? (
