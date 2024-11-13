@@ -1,7 +1,12 @@
+'use client'
 import React from 'react'
 import ImageUpload from './_components/ImageUpload'
 
 function AiRedesign() {
+  const onHandleInputChange = (value: any, fieldName: string) => {
+    // Function implementation
+  }
+
   return (
     <div>
       
@@ -14,10 +19,22 @@ function AiRedesign() {
 
       <div className='grid grid-cols-1 md:grid-cols-2 items-center justify-center mt-20'>
       {/* Image Upload*/}
-       <ImageUpload/>
+       <ImageUpload selectedImage={(value)=>onHandleInputChange(value,'image')} />
+
+       {/* Form*/}
+       <div>
+       
+       {/* Type of Room*/}
+
+       {/* AI ReDesign Type */}
+
+       {/* Custom Additional Requirements*/}
+
+       {/* AI Generate Image Button*/}
 
 
-      {/* Form*/}
+       </div>
+
 
       </div>
 
