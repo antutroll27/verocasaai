@@ -7,7 +7,7 @@ function EmptyState() {
 
   return (
     <div className="flex justify-center items-center ">
-      <div className="w-[80vw] h-[1000px] mt-[-70vh] relative " style={{ left: '25vw' }}> {/* Keep the wrapper dimensions as is */}
+      <div className="w-[80vw] h-[1000px] mt-[-80vh] relative " style={{ left: '15vw' }}> {/* Keep the wrapper dimensions as is */}
         <Spline
           scene="https://prod.spline.design/jdwqrkdjY03dP0aL/scene.splinecode"
           
@@ -20,9 +20,7 @@ function EmptyState() {
           }}
         />
     </div>
-    <Button className='py-2 px-10 flex  space-x-2'>
-      <span>Redesign Room with AI</span>
-    </Button>
+    
     </div>
   );
 }
