@@ -5,6 +5,7 @@ import axios from 'axios';
 import { UserDataContext } from './_context/UserDataContext';
 import { UserDetailType } from '@/types';
 
+
 function Provider({ children }: PropsWithChildren) {
 
 
@@ -26,7 +27,9 @@ function Provider({ children }: PropsWithChildren) {
   }
   return (
     <UserDataContext.Provider value={{ userDetail: userDetail as UserDetailType[], setUserDetail }}>
+      
       {children}
+      
     </UserDataContext.Provider>
   )
 }

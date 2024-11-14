@@ -3,7 +3,7 @@ import {Space_Grotesk} from 'next/font/google'
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
-import RetroGrid from "@/components/ui/retro-grid";
+
 
 // Define the metadata for the application, which includes the title and description.
 // This metadata is used for SEO purposes and is displayed in the browser tab.
@@ -24,6 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    
     <ClerkProvider>
     <html lang="en">
      
@@ -34,9 +35,11 @@ export default function RootLayout({
         <Provider>
         {children}
         </Provider>
+        
       </body>
       
     </html>
     </ClerkProvider>
+    
   );
 }
