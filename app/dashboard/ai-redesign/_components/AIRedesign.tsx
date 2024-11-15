@@ -26,8 +26,9 @@ function AIRedesign() {
         }
         ]
    return (
-    <div>
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7'>
+    <div className='mt-6'>
+    <h2 className='pl-4 text-colors-custom-pastel bg-colors-custom-lightpurple font-bold rounded-md'>2. Select AI Redesign Type</h2>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 mt-4'>
         {DesignTypes.map((design,index)=> (
             <div key={index}>
                <Image src={design.image} alt={design.name} width={400} height={400} />
