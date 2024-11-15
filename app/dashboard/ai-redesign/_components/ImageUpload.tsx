@@ -2,13 +2,14 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
-function ImageUpload() {
+function ImageUpload({ selectedImage }: { selectedImage: (file: File) => void }) {
   
     const [file, setFile] = useState<File | null>(null);
     const afterFileSelected = (event: React.ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;
         if (files && files.length > 0) {
             setFile(files[0]);
+            selectedImage(files[0]);
             
         }
         //console.log(event.target.files[0])

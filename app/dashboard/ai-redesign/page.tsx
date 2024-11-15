@@ -29,7 +29,7 @@ function AiRedesign() {
        {/* Type of Room*/}
        <Room selectedRoomType={(value)=>onHandleInputChange(value,'room') } />
        {/* AI ReDesign Type */}
-       <AIRedesign/>
+       <AIRedesign selectedAIRedesignType={(value)=>onHandleInputChange(value,'AIRedesign')}/>
        {/* Custom Additional Requirements*/}
 
        {/* AI Generate Image Button*/}
