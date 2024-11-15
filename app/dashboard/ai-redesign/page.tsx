@@ -2,6 +2,7 @@
 import React from 'react'
 import ImageUpload from './_components/ImageUpload'
 import Room from './_components/Room'
+import AIRedesign from './_components/AIRedesign'
 
 function AiRedesign() {
   const onHandleInputChange = (value: any, fieldName: string) => {
@@ -26,9 +27,9 @@ function AiRedesign() {
        <div>
        
        {/* Type of Room*/}
-       <Room />
+       <Room selectedRoomType={(value)=>onHandleInputChange(value,'room') } />
        {/* AI ReDesign Type */}
-
+       <AIRedesign/>
        {/* Custom Additional Requirements*/}
 
        {/* AI Generate Image Button*/}

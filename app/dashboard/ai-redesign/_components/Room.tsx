@@ -8,16 +8,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { Value } from '@radix-ui/react-select';
 
 
-function Room() {
+function Room({ selectedRoomType }: { selectedRoomType: (value: string) => void }) {
   
 
   return (
     <div className='-mt-9' >
       <Select required
-       
-      
+       onValueChange={(value: string) => {
+         selectedRoomType(value); // Handle the value change here
+       }}
       >
         <h3 className='mb-2 font-semibold text-colors-custom-lightpurple'> Choose Room Type *</h3>
       <SelectTrigger className="w-full bg-white">
