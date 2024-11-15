@@ -10,19 +10,19 @@ function AIRedesign() {
         },
         {
             name:'Modern',
-            image:'/minimalistic.jpg',
+            image:'/modern.png',
         },
         {
             name:'Rustic',
-            image:'/minimalistic.jpg',
+            image:'/rustic.png',
         },
         {
             name:'Old School',
-            image:'/minimalistic.jpg',
+            image:'/oldschool.png',
         },
         {
             name:'Futuristic',
-            image:'/minimalistic.jpg',
+            image:'/futuristic.png',
         }
         ]
 

@@ -6,6 +6,6 @@ export const Users=pgTable('users',{
     name:varchar('name',{length:255}).notNull(),
     email:varchar('email',{length:50}).notNull().unique(),
     imageUrl:varchar('imageUrl').notNull().unique(),
-    credits:integer('credits').default(8),
+    credits:integer('credits').default(4),
     createdAt: timestamp('created_at').defaultNow().notNull(),
 });
