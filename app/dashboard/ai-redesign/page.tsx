@@ -3,6 +3,7 @@ import React from 'react'
 import ImageUpload from './_components/ImageUpload'
 import Room from './_components/Room'
 import AIRedesign from './_components/AIRedesign'
+import PromptArea from './_components/PromptArea'
 
 function AiRedesign() {
   const onHandleInputChange = (value: any, fieldName: string) => {
@@ -31,7 +32,7 @@ function AiRedesign() {
        {/* AI ReDesign Type */}
        <AIRedesign selectedAIRedesignType={(value)=>onHandleInputChange(value,'AIRedesign')}/>
        {/* Custom Additional Requirements*/}
-
+       <PromptArea/>
        {/* AI Generate Image Button*/}
 
 
