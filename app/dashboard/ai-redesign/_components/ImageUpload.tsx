@@ -23,7 +23,7 @@ function ImageUpload({ selectedImage }: { selectedImage: (file: File) => void })
       
        <div>
         <label htmlFor='image-upload'>
-             <div className={`-mt-8 p-36 bg-colors-custom-pink rounded-2xl flex justify-center cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-colors-custom-lightpurple
+             <div className={`-mt-8 p-36 bg-neutral-100 rounded-2xl flex justify-center cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-colors-custom-lightpurple
               ${file&&'p-0 bg-colors-custom-pastel shadow-lg'} `}>
                 {!file ? <Image 
                  src='/uploadimage.svg' 

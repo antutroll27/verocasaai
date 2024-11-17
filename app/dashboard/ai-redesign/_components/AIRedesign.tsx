@@ -41,7 +41,7 @@ function AIRedesign({ selectedAIRedesignType }: { selectedAIRedesignType: (desig
     const [selectedRoomRedesign, setSelectedRoomRedesign] = useState<string | undefined>();
    return (
     <div className='mt-10'>
-    <h2 className='pl-4 text-colors-custom-pastel bg-colors-custom-lightpurple font-bold rounded-md'>2. Select AI Redesign Type</h2>
+    <h2 className='pl-4 text-neutral-50 bg-colors-custom-lightpurple font-bold rounded-md'>2. Select AI Redesign Type*</h2>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7 mt-5'>
         {DesignTypes.map((design,index)=> (
             <div key={index} className=''
