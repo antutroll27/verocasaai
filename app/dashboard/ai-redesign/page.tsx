@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import ImageUpload from './_components/ImageUpload'
 import Room from './_components/Room'
 import AIRedesign from './_components/AIRedesign'
@@ -8,8 +8,16 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 
 function AiRedesign() {
+
+  const [formData,setFormData]=useState([]);
   const onHandleInputChange = (value: any, fieldName: string) => {
     // Function implementation
+    setFormData(prev=>({
+     ...prev,
+     [fieldName]:value
+    })
+    )
+    console.log(formData)
   }
 
   return (
@@ -37,17 +45,17 @@ function AiRedesign() {
        <PromptArea customPrompt={(value)=>onHandleInputChange(value,'CustomPrompt')}/>
        {/* AI Generate Image Button */}
        <div className="flex justify-end relative pt-3">
-         <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4'>
+         <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'>
            <Image 
               src="/manifest.svg"
               alt="credits"
               width={20}
               height={20}
-              className="inline-block mr-1"
+              className="inline-block mr-1 "
            />
            Manifest Revamped Room 
          </Button>
-         <p className='absolute top-0 right-0 text-colors-custom-purple text-sm pt-2 pr-2'>
+         <p className='absolute top-0 right-0 text-colors-custom-purple text-sm pt-2 pr-2 '>
           * <strong>1</strong> Credit per Redesign
          </p>
        </div>
