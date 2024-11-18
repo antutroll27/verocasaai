@@ -6,10 +6,13 @@ import AIRedesign from './_components/AIRedesign'
 import PromptArea from './_components/PromptArea'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
+import axios from 'axios';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { storage } from '@/config/firebaseConfig'
 
 function AiRedesign() {
 
-  const [formData,setFormData]=useState([]);
+  const [formData,setFormData]=useState<{ image?: File; room?: string; AIRedesign?: string; CustomPrompt?: string }>({});
   const onHandleInputChange = (value: any, fieldName: string) => {
     // Function implementation
     setFormData(prev=>({
@@ -19,6 +22,34 @@ function AiRedesign() {
     )
     console.log(formData)
   }
+
+  const generateAIRedesign=async()=>{
+    const userImageUrl= await SaveUserImageToFirebase();
+    console.log(userImageUrl);
+    //const result= await axios.post('/api/AIRedesigns',formData)
+    //console.log(result);
+  }
+
+  const SaveUserImageToFirebase=async()=>{
+    // Check if the image is defined
+    if (!formData.image) {
+        console.error('No image found in formData');
+        return; // Exit the function if no image is present
+    }
+
+    // Save user uploaded image to FireBase
+    const fileName = Date.now() + '_userUpload.png';
+    const imageRef = ref(storage, 'AIRedesignedRooms/' + fileName);
+
+    await uploadBytes(imageRef, formData.image as File).then(resp => {
+        console.log('File Uploaded!');
+    });
+    // Fetch URL of the uploaded file
+    const getUrl = await getDownloadURL(imageRef);
+    return getUrl;
+  }
+
+  
 
   return (
     <div>
@@ -45,7 +76,8 @@ function AiRedesign() {
        <PromptArea customPrompt={(value)=>onHandleInputChange(value,'CustomPrompt')}/>
        {/* AI Generate Image Button */}
        <div className="flex justify-end relative pt-3">
-         <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'>
+         <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'
+         onClick={generateAIRedesign}>
            <Image 
               src="/manifest.svg"
               alt="credits"
