@@ -6,9 +6,9 @@ import AIRedesign from './_components/AIRedesign'
 import PromptArea from './_components/PromptArea'
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import axios from 'axios';
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import axios from 'axios'
 import { storage } from '@/config/firebaseConfig'
+import { ref, uploadBytes } from 'firebase/storage';
 
 function AiRedesign() {
 
@@ -23,33 +23,17 @@ function AiRedesign() {
     console.log(formData)
   }
 
-  const generateAIRedesign=async()=>{
-    const userImageUrl= await SaveUserImageToFirebase();
-    console.log(userImageUrl);
-    //const result= await axios.post('/api/AIRedesigns',formData)
-    //console.log(result);
+  const ManifestAiImage=async()=> {
+     const result=await axios.post('/api/AIRedesigns',formData)
+     console.log(result)
   }
 
   const SaveUserImageToFirebase=async()=>{
-    // Check if the image is defined
-    if (!formData.image) {
-        console.error('No image found in formData');
-        return; // Exit the function if no image is present
-    }
+    const fileName= Date.now()+ '_userUpload.png';
+    const imageRef=ref(storage,'AIRedesignedRooms/'+fileName);
 
-    // Save user uploaded image to FireBase
-    const fileName = Date.now() + '_userUpload.png';
-    const imageRef = ref(storage, 'AIRedesignedRooms/' + fileName);
-
-    await uploadBytes(imageRef, formData.image as File).then(resp => {
-        console.log('File Uploaded!');
-    });
-    // Fetch URL of the uploaded file
-    const getUrl = await getDownloadURL(imageRef);
-    return getUrl;
+    await uploadBytes(imageRef, formData.image as File)
   }
-
-  
 
   return (
     <div>
@@ -77,7 +61,7 @@ function AiRedesign() {
        {/* AI Generate Image Button */}
        <div className="flex justify-end relative pt-3">
          <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'
-         onClick={generateAIRedesign}>
+         onClick={ManifestAiImage}>
            <Image 
               src="/manifest.svg"
               alt="credits"
