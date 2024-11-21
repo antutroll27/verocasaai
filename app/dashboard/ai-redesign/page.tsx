@@ -8,7 +8,8 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import axios from 'axios'
 import { storage } from '@/config/firebaseConfig'
-import { ref, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+
 
 function AiRedesign() {
 
@@ -24,15 +25,29 @@ function AiRedesign() {
   }
 
   const ManifestAiImage=async()=> {
-     const result=await axios.post('/api/AIRedesigns',formData)
+     const userImageUrl= await SaveUserImageToFirebase();
+     const result=await axios.post('/api/AIRedesigns',{
+       imageUrl:userImageUrl,
+       room:formData?.room,
+       aiRedesign:formData?.AIRedesign,
+       customPrompt:formData?.CustomPrompt,
+      }
+      )
      console.log(result)
+     return userImageUrl;
   }
 
   const SaveUserImageToFirebase=async()=>{
     const fileName= Date.now()+ '_userUpload.png';
     const imageRef=ref(storage,'AIRedesignedRooms/'+fileName);
 
-    await uploadBytes(imageRef, formData.image as File)
+    await uploadBytes(imageRef, formData.image as File).then(resp=>{console.log('...File Uploaded')})
+
+
+    //Url of the user uploaded image
+    const fetchUrl= await getDownloadURL(imageRef);
+    console.log(fetchUrl);
+    return fetchUrl;
   }
 
   return (
