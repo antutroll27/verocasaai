@@ -30,7 +30,7 @@ function AiRedesign() {
        imageUrl:userImageUrl,
        room:formData?.room,
        aiRedesign:formData?.AIRedesign,
-       customPrompt:formData?.CustomPrompt,
+       customPrompt:formData?.CustomPrompt
       }
       )
      console.log(result)
