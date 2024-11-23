@@ -65,7 +65,7 @@ function AiRedesign() {
        <ImageUpload selectedImage={(value)=>onHandleInputChange(value,'image')} />
 
        {/* Form*/}
-       <div>
+       <div className="max-w-3xl">
        
        {/* Type of Room*/}
        <Room selectedRoomType={(value)=>onHandleInputChange(value,'room') } />
@@ -73,23 +73,25 @@ function AiRedesign() {
        <AIRedesign selectedAIRedesignType={(value)=>onHandleInputChange(value,'AIRedesign')}/>
        {/* Custom Additional Requirements*/}
        <PromptArea customPrompt={(value)=>onHandleInputChange(value,'CustomPrompt')}/>
+       
        {/* AI Generate Image Button */}
-       <div className="flex justify-end relative pt-3">
-         <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'
-         onClick={ManifestAiImage}>
-           <Image 
-              src="/manifest.svg"
-              alt="credits"
-              width={20}
-              height={20}
-              className="inline-block mr-1 "
-           />
-           Manifest Revamped Room 
-         </Button>
-         <p className='absolute top-0 right-0 text-colors-custom-purple text-sm pt-2 pr-2 '>
-          * <strong>1</strong> Credit per Redesign
-         </p>
-       </div>
+
+<div className="flex justify-end relative pt-3 max-w-2xl"> {/* Added max-w-3xl */}
+  <Button className='bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52'
+    onClick={ManifestAiImage}>
+    <Image 
+      src="/manifest.svg"
+      alt="credits"
+      width={20}
+      height={20}
+      className="inline-block mr-1"
+    />
+    Manifest Revamped Room 
+  </Button>
+  <p className='absolute top-0 right-0 text-colors-custom-purple text-sm pt-2 pr-2'>
+    * <strong>1</strong> Credit per Redesign
+  </p>
+</div>
          
        </div>
 

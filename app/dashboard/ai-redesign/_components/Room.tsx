@@ -21,8 +21,8 @@ function Room({ selectedRoomType }: { selectedRoomType: (value: string) => void 
          selectedRoomType(value); // Handle the value change here
        }}
       >
-    <h3 className=' pl-4 text-neutral-50 font-semibold  bg-colors-custom-pink rounded-md w-21 mb-4'>1. Choose Room Type *</h3>
-      <SelectTrigger className="w-full bg-neutral-100">
+    <h3 className=' pl-4 text-neutral-50 font-semibold  bg-colors-custom-pink rounded-md w-21 mb-4 max-w-2xl'>1. Choose Room Type *</h3>
+      <SelectTrigger className="max-w-2xl bg-neutral-100">
         <SelectValue placeholder="Room Type   🏠  🛏️" />
       </SelectTrigger>
       <SelectContent>
