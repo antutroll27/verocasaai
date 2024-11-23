@@ -8,6 +8,10 @@ interface ReplicateOutput {
  import axios from "axios";
  import { getDownloadURL, ref, uploadString } from 'firebase/storage';
  import { storage } from '@/config/firebaseConfig'
+ import { RedesignedAIRoomImage } from "@/config/schema";
+ import { db } from '@/config';
+
+
  
  const replicate = new Replicate({auth: process.env.NEXT_PUBLIC_REPLICATE_API_TOKEN});
  
@@ -40,7 +44,18 @@ interface ReplicateOutput {
         originalUrl: output,
         firebaseUrl: downloadURL
       }
-    });*/
+    }); */
+
+    //Save Data to our PGDatabase
+    const savetoDb= await db.insert(RedesignedAIRoomImage).values({
+      roomType: room,
+      AIRedesignType: aiRedesign,
+      OgImage: imageUrl,
+      AIGeneratedImage: downloadURL,
+      //userEmail: user?.primaryEmailAddress?.emailAddress,
+    }).returning({id: RedesignedAIRoomImage.imageID});
+      console.log(savetoDb);
+      return NextResponse.json({'result':savetoDb });
  
   } catch(e) {
     console.log('API Error:', e);

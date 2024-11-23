@@ -24,21 +24,8 @@ function AiRedesign() {
     console.log(formData)
   }
 
-  const ManifestAiImage=async()=> {
-     const userImageUrl= await SaveUserImageToFirebase();
-     const result=await axios.post('/api/AIRedesigns',{
-       imageUrl:userImageUrl,
-       room:formData?.room,
-       aiRedesign:formData?.AIRedesign,
-       customPrompt:formData?.CustomPrompt
-      }
-      )
-     console.log(result)
-     return userImageUrl;
-  }
-
   const SaveUserImageToFirebase=async()=>{
-    const fileName= Date.now()+ '_userUpload.png';
+    const fileName= Date.now()+'_userUpload.png';
     const imageRef=ref(storage,'AIRedesignedRooms/'+fileName);
 
     await uploadBytes(imageRef, formData.image as File).then(resp=>{console.log('...File Uploaded')})
@@ -49,6 +36,18 @@ function AiRedesign() {
     console.log(fetchUrl);
     return fetchUrl;
   }
+  const ManifestAiImage=async()=> {
+    const userImageUrl= await SaveUserImageToFirebase();
+    const result=await axios.post('/api/AIRedesigns',{
+      imageUrl:userImageUrl,
+      room:formData?.room,
+      aiRedesign:formData?.AIRedesign,
+      customPrompt:formData?.CustomPrompt
+     }
+     )
+    console.log(result)
+    return userImageUrl;
+ }
 
   return (
     <div>
