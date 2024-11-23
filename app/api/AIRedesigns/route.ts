@@ -16,7 +16,7 @@ interface ReplicateOutput {
  const replicate = new Replicate({auth: process.env.NEXT_PUBLIC_REPLICATE_API_TOKEN});
  
  export async function POST(req: Request) {
-  const {imageUrl,room,aiRedesign,customPrompt}= await req.json();
+  const {imageUrl,room,aiRedesign,customPrompt,userEmail}= await req.json();
  
   try {
     const input = {
@@ -52,10 +52,10 @@ interface ReplicateOutput {
       AIRedesignType: aiRedesign,
       OgImage: imageUrl,
       AIGeneratedImage: downloadURL,
-      //userEmail: user?.primaryEmailAddress?.emailAddress,
+      userEmail: userEmail,
     }).returning({id: RedesignedAIRoomImage.imageID});
       console.log(savetoDb);
-      return NextResponse.json({'result':savetoDb });
+      return NextResponse.json({'result':savetoDb[0] });
  
   } catch(e) {
     console.log('API Error:', e);

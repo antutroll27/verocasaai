@@ -9,10 +9,12 @@ import Image from 'next/image'
 import axios from 'axios'
 import { storage } from '@/config/firebaseConfig'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { useUser } from '@clerk/nextjs'
 
 
 function AiRedesign() {
 
+  const {user}= useUser();
   const [formData,setFormData]=useState<{ image?: File; room?: string; AIRedesign?: string; CustomPrompt?: string }>({});
   const onHandleInputChange = (value: any, fieldName: string) => {
     // Function implementation
@@ -42,7 +44,8 @@ function AiRedesign() {
       imageUrl:userImageUrl,
       room:formData?.room,
       aiRedesign:formData?.AIRedesign,
-      customPrompt:formData?.CustomPrompt
+      customPrompt:formData?.CustomPrompt,
+      userEmail: user?.primaryEmailAddress?.emailAddress,
      }
      )
     console.log(result)
