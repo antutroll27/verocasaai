@@ -59,6 +59,8 @@ interface ReplicateOutput {
  
   } catch(e) {
     console.log('API Error:', e);
+
+    
     return NextResponse.json({error: e}, { status: 500 });
   }
  }
