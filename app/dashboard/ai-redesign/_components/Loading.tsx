@@ -11,17 +11,23 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import Image from 'next/image'
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
-function Loading() {
+
+function Loading({ loading }: { loading: boolean }) {
   return (
-    <AlertDialog>
+    <AlertDialog open={loading}>
       <AlertDialogContent>
-      <div className='bg-white flex flex-col items-center my-10'>
-        <Image src ='/loading.gif'
-        alt="credits"
-        width={100}
-        height={100} />
+      <div className='bg-white flex flex-col items-center my-4'>
+        
+        <DotLottieReact
+          src="https://lottie.host/cb2edcaf-6cfc-4f71-b9ae-8c44128a1b71/Aj3KDstryz.lottie"
+          loop
+          autoplay
+          style={{ width: '200px', height: '100px' }}
+        />
+        <h2 className='text-sm text-colors-custom-lightpurple'>Your room is being Redesigned ,  <strong> Don't Reload</strong> </h2>
       </div>
       </AlertDialogContent>
     </AlertDialog>
@@ -30,3 +36,7 @@ function Loading() {
 }
 
 export default Loading
+
+
+
+
