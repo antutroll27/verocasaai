@@ -55,7 +55,7 @@ interface ReplicateOutput {
       userEmail: userEmail,
     }).returning({id: RedesignedAIRoomImage.imageID});
       console.log(savetoDb);
-      return NextResponse.json({'result':savetoDb[0] });
+      return NextResponse.json({'result':downloadURL });
  
   } catch(e) {
     console.log('API Error:', e);

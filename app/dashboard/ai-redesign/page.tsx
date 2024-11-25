@@ -11,6 +11,7 @@ import { storage } from '@/config/firebaseConfig'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useUser } from '@clerk/nextjs'
 import Loading from './_components/Loading'
+import OutputImageDialog from './_components/OutputImageDialog'
 
 
 function AiRedesign() {
@@ -18,6 +19,10 @@ function AiRedesign() {
   const { user } = useUser();
   const [formData, setFormData] = useState<{ image?: File; room?: string; AIRedesign?: string; CustomPrompt?: string }>({});
   const [loading,setLoading]=useState(false);
+  const [AIOutputImage, setAIOutputImage]= useState();
+  const [output,setOutput]=useState();
+  const [outputImageDialog, setOutputImageDialog]= useState(false);
+  const [beforeImage, setBeforeImage] = useState<string | undefined>();
   const onHandleInputChange = (value: any, fieldName: string) => {
     // Function implementation
     setFormData(prev => ({
@@ -38,9 +43,12 @@ function AiRedesign() {
     //Url of the user uploaded image
     const fetchUrl = await getDownloadURL(imageRef);
     console.log(fetchUrl);
+    setBeforeImage(fetchUrl);
     return fetchUrl;
   }
   const ManifestAiImage = async () => {
+
+    setLoading(true);
     const userImageUrl = await SaveUserImageToFirebase();
     const result = await axios.post('/api/AIRedesigns', {
       imageUrl: userImageUrl,
@@ -49,8 +57,11 @@ function AiRedesign() {
       customPrompt: formData?.CustomPrompt,
       userEmail: user?.primaryEmailAddress?.emailAddress,
     }
-    )
-    console.log(result)
+    );
+    console.log(result.data);
+    setAIOutputImage(result.data.result);
+    setOutputImageDialog(true);
+    setLoading(false);
     return userImageUrl;
   }
 
@@ -101,7 +112,11 @@ function AiRedesign() {
         
 
       </div>
-      <Loading loading={true} />
+      <Loading loading={loading} />
+      <OutputImageDialog openImageDialog={outputImageDialog} closeImageDialog={()=>setOutputImageDialog(false)}
+        beforeImage={beforeImage}
+        afterAiImage={AIOutputImage}
+        />
     </div>
   )
 }
