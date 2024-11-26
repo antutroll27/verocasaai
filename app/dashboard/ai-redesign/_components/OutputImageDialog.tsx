@@ -30,7 +30,7 @@ function OutputImageDialog({ openImageDialog, closeImageDialog,beforeImage,after
 
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                        <h2 className='text-colors-custom-purple'>Redesigned Result </h2>
+                        <h2 className='text-2xl font-bold text-colors-custom-purple mb-5'>Redesigned Result </h2>
                         <ReactBeforeSliderComponent
                             firstImage={{
                                 imageUrl: afterAiImage|| ''
@@ -39,7 +39,7 @@ function OutputImageDialog({ openImageDialog, closeImageDialog,beforeImage,after
                                 imageUrl: beforeImage || ''
                             }}
                         />
-                        <Button onClick={() => closeImageDialog(false)} className='bg-colors-custom-purple'>CLOSE</Button>
+                        <Button onClick={(e) => { e.stopPropagation(); closeImageDialog(false); }} className='bg-colors-custom-purple mb-5'>CLOSE</Button>
                     </AlertDialogHeader>
 
                 </AlertDialogContent>
