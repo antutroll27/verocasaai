@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Users, RedesignedAIRoomImage } from '@/config/schema';
 import { eq } from 'drizzle-orm';
 import { db } from '@/config';
+import RoomRedesigns from './RoomRedesigns';
 
 function Listing() {
 
@@ -48,8 +49,14 @@ const fetchUserRoomsList = async () => {
       {userRoomList?.length === 0 ? (
         <div><EmptyState/></div>
       ) : (
-        <div>
+        <div className='mt-10'>
           {/* Content for non-empty list */}
+          <h2 className='font-semibold text-primary'>Your Gallery</h2>
+          <div className='grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-10'> 
+          {userRoomList.map((room, index) => (
+              <RoomRedesigns key={index} room={room} />
+          ))}
+          </div>
         </div>
       )}
       
