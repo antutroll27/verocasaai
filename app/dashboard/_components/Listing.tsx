@@ -1,16 +1,38 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useUser } from '@clerk/nextjs';
 import EmptyState from './EmptyState';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { Users, RedesignedAIRoomImage } from '@/config/schema';
+import { eq } from 'drizzle-orm';
+import { db } from '@/config';
 
 function Listing() {
 
     const {user}=useUser();
     const [userRoomList,setUserRoomList]=useState([]);
-
-  return (
+    
+    useEffect(()=>{
+    user && fetchUserRoomsList();
+  }, 
+   [user]
+)
+const fetchUserRoomsList = async () => {
+  const userEmail = user?.primaryEmailAddress?.emailAddress;
+  if (userEmail) {
+    try {
+      const response = await fetch(`/api/userRooms?email=${(userEmail)}`);
+      if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+      const data = await response.json();
+      setUserRoomList(data);
+      console.log(data);
+    } catch (error) {
+      console.error('Fetch error:', error);
+    }
+  }
+};
+    return (
     <div>
       <div className="mt-20">  
       <h2 className="text-6xl font-bold text-colors-custom-lightpurple mb-4">Never run out </h2>

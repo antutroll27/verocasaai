@@ -19,7 +19,7 @@ export const RedesignedAIRoomImage=pgTable('RedesignedAIRoomImage',{
     roomType:varchar('roomType').notNull(),
     AIRedesignType:varchar('AIRedesignType').notNull(),
     OgImage:varchar('OgImage').notNull(),
-    AIGeneratedImage:varchar('IGeneratedImage').notNull(),
+    AIGeneratedImage:varchar('AIGeneratedImage').notNull(),
     userEmail:varchar('userEmail'),
 }
 
