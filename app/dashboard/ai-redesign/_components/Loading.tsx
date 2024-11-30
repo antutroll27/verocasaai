@@ -13,9 +13,11 @@ import {
 import Image from 'next/image'
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
+interface loadingstate{
+  loading:boolean
+}
 
-
-function Loading({ loading }: { loading: boolean }) {
+function Loading({ loading }: loadingstate) {
   return (
     <AlertDialog open={loading}>
       <AlertDialogContent>

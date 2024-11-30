@@ -34,7 +34,7 @@ function Listing() {
     }
   };
   return (
-    <div className="max-w-7xl mx-auto px-1 bg-colors-custom-pastel"> {/* Added container with max width */}
+    <div className="max-w-7xl mx-auto px-1 "> {/* Added container with max width */}
       <div className="mt-20">  
         <h2 className="text-6xl font-bold text-colors-custom-lightpurple mb-4">Never run out of Ideas </h2>
         
@@ -68,7 +68,8 @@ function Listing() {
             ))}
           </div>
         </div>
-      )}
+      )
+      }
     </div>
   )
 }
