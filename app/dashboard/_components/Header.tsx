@@ -33,7 +33,7 @@ function Header() {
         
         {/* Credits Display */}
         
-        <Button variant='ghost' className='text-colors-custom-purple text-base'>Buy Credits</Button>
+        <Link href="/dashboard/purchase-credits" className='text-colors-custom-purple text-base'>Buy Credits</Link>
         
         <div className="flex gap-3 items-center bg-colors-custom-purple px-4 py-1 rounded-md">
           <div className='bg-colors-custom-pink rounded-full px-1 py-1'>
@@ -46,8 +46,9 @@ function Header() {
             </div>
             
              
-          <h2 className="text-white font-bold text-xl">{typeof userData?.credits === 'number' ? userData.credits : 0}</h2>
-          <h2 className="text-colors-custom-pastel text-xs pt-1">Credits</h2>
+           {/*<h2 className="text-white font-bold text-xl">{typeof userData?.credits === 'number' ? userData.credits : 0}</h2>*/}
+          <h2 className="text-white font-bold text-l">FREE till 31st DEC</h2>
+          {/*<h2 className="text-colors-custom-pastel text-xs pt-1">Credits</h2>*/}
         </div>
         
         {/* User Button */}

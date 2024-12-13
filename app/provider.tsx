@@ -6,41 +6,54 @@ import { UserDataContext } from './_context/UserDataContext';
 import { UserDetailType } from '@/types';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 
-
 function Provider({ children }: PropsWithChildren) {
+    const [userDetail, setUserDetail] = useState<UserDetailType | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+    const { user } = useUser();
 
+    useEffect(() => {
+        if (user) {
+            VerifyUser();
+        } else {
+            setIsLoading(false);
+        }
+    }, [user]);
 
-  const [userDetail, setUserDetail] = useState<UserDetailType | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true); // Add loading state
+    const VerifyUser = async () => {
+        try {
+            // Format user data before sending
+            const userData = {
+                fullName: user?.fullName,
+                primaryEmailAddress: {
+                    emailAddress: user?.primaryEmailAddress?.emailAddress
+                },
+                imageUrl: user?.imageUrl
+            };
 
-  
-
-
-  const {user}=useUser();
-  useEffect(() => {
-    if (user) {
-        VerifyUser();
-    } else {
-        setIsLoading(false); // Set loading to false if no user
+            const dataResult = await axios.post('/api/verify-user', {
+                user: userData
+            });
+            setUserDetail(dataResult.data.result);
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Verify user error:', error);
+            setIsLoading(false);
+        }
     }
-}, [user]);
-  
-    /* Verify User */
-  const VerifyUser= async()=>{
-     const dataResult= await axios.post('/api/verify-user',{
-      user:user
-     });
-     setUserDetail(dataResult.data.result);
-     
-     //console.log(dataResult.data)
-  }
-  return (
-    <UserDataContext.Provider value={{ userDetail, setUserDetail,isLoading }}>
-      <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENTID || '' }}>
-      {children}
-      </PayPalScriptProvider>
-    </UserDataContext.Provider>
-  )
+
+    if (isLoading) {
+        return <div className="flex items-center justify-center min-h-screen">
+            Loading...
+        </div>;
+    }
+
+    return (
+        <UserDataContext.Provider value={{ userDetail, setUserDetail, isLoading }}>
+            <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENTID || '' }}>
+                {children}
+            </PayPalScriptProvider>
+        </UserDataContext.Provider>
+    )
 }
 
 export default Provider

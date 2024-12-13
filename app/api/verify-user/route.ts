@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
+        
 
         // Find existing user
         const userInfo = await db
