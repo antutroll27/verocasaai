@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import ImageUpload from './_components/ImageUpload'
 import Room from './_components/Room'
 import AIRedesign from './_components/AIRedesign'
@@ -12,25 +12,48 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { useUser } from '@clerk/nextjs'
 import Loading from './_components/Loading'
 import OutputImageDialog from './_components/OutputImageDialog'
+import { UserDataContext } from '@/app/_context/UserDataContext'
+import { UserDetailType } from '@/types'; // Import the UserDetailType
+import { db } from '@/config'; // Import the database client from the configuration
+import { Users } from '@/config/schema'; // Import the schema for RedesignedAI Room Images
+import { eq } from 'drizzle-orm';
 
+interface FormData {
+  image?: File;
+  room?: string;
+  AIRedesign?: string;
+  CustomPrompt?: string;
+}
+
+interface AIResponse {
+  result: string;
+  error?: string;
+}
 
 function AiRedesign() {
   const { user } = useUser(); // Get user information from Clerk
-  const [formData, setFormData] = useState<{ image?: File; room?: string; AIRedesign?: string; CustomPrompt?: string }>({});
+  const { userDetail, setUserDetail } = useContext(UserDataContext);
+  const [formData, setFormData] = useState<FormData>({});
   const [loading, setLoading] = useState(false); // Loading state for async operations
-  const [AIOutputImage, setAIOutputImage] = useState(); // State to hold AI generated image
+  const [AIOutputImage, setAIOutputImage] = useState<string | undefined>(); // State to hold AI generated image
   const [output, setOutput] = useState(); // State for output (not used in the provided code)
   const [outputImageDialog, setOutputImageDialog] = useState(false); // Control dialog visibility
   const [beforeImage, setBeforeImage] = useState<string | undefined>(); // State for the uploaded image URL
 
   // Handle input changes and update formData state
-  const onHandleInputChange = (value: any, fieldName: string) => {
+  const onHandleInputChange = (value: string | File, fieldName: keyof FormData) => {
     setFormData(prev => ({
       ...prev,
       [fieldName]: value
     }));
     console.log(formData); // Log current form data for debugging
   }
+
+  useEffect(() => {
+    if (!userDetail) {
+      console.error("User details are missing or not provided in context");
+    }
+  }, [userDetail]);
 
   // Save user-uploaded image to Firebase and return its URL
   const SaveUserImageToFirebase = async () => {
@@ -48,21 +71,73 @@ function AiRedesign() {
 
   // Generate the AI image based on user input
   const ManifestAiImage = async () => {
-    setLoading(true); // Set loading state to true
-    const userImageUrl = await SaveUserImageToFirebase(); // Save user image and get URL
-    const result = await axios.post('/api/AIRedesigns', {
-      imageUrl: userImageUrl,
-      room: formData?.room,
-      aiRedesign: formData?.AIRedesign,
-      customPrompt: formData?.CustomPrompt,
-      userEmail: user?.primaryEmailAddress?.emailAddress,
-    });
-    console.log(result.data); // Log the result from the API
-    setAIOutputImage(result.data.result); // Set the AI output image
-    setOutputImageDialog(true); // Open the output image dialog
-    setLoading(false); // Set loading state to false
-    return userImageUrl; // Return the user image URL
-  }
+    try {
+      // Check for user and credits
+      if (!userDetail || userDetail.credits < 1) {
+        alert('Insufficient credits. Please purchase more credits to continue.');
+        return;
+      }
+  
+      setLoading(true);
+      const userImageUrl = await SaveUserImageToFirebase();
+      
+      // Generate AI image
+      const result = await axios.post('/api/AIRedesigns', {
+        imageUrl: userImageUrl,
+        room: formData?.room,
+        aiRedesign: formData?.AIRedesign,
+        customPrompt: formData?.CustomPrompt,
+        userEmail: user?.primaryEmailAddress?.emailAddress,
+      });
+  
+      if (!result.data || !result.data.result) {
+        throw new Error('Failed to generate AI image');
+      }
+  
+      // Deduct credits
+      //await deductCredits();
+  
+      setAIOutputImage(result.data.result);
+      setOutputImageDialog(true);
+  
+    } catch (error: any) {
+      console.error('Error:', error);
+      alert(error.message || 'Failed to process your request. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /*const deductCredits = async () => {
+    if (!userDetail || !userDetail.id) {
+      throw new Error("User details are not available");
+    }
+  
+    console.log("User details before deducting credits:", userDetail);
+  
+    const result = await db
+      .update(Users)
+      .set({
+        credits: (userDetail.credits || 0) - 1, // Deduct one credit
+      })
+      .where(eq(Users.id, userDetail.id))
+      .returning({id:Users.id}); // Return t                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    he updated user's ID
+  
+    console.log("Database update result:", result);
+  
+    if (result.length > 0) {
+      setUserDetail(prev=>({
+        ...prev,
+        credits:userDetail?.credits-1
+    }));
+  
+      console.log("Updated user details in state:", userDetail);
+      return result[0].id; // Return the updated user's ID
+    } else {
+      throw new Error("Failed to update credits in the database.");
+    }
+  }; */
+  
 
   return (
     <div>

@@ -5,6 +5,7 @@ import { UserButton } from '@clerk/nextjs';
 import { UserDataContext } from '@/app/_context/UserDataContext';
 import { Users } from '@/config/schema';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 
 function Header() {
@@ -31,7 +32,9 @@ function Header() {
       <div className="flex items-center gap-10 pr-5">
         
         {/* Credits Display */}
+        
         <Button variant='ghost' className='text-colors-custom-purple text-base'>Buy Credits</Button>
+        
         <div className="flex gap-3 items-center bg-colors-custom-purple px-4 py-1 rounded-md">
           <div className='bg-colors-custom-pink rounded-full px-1 py-1'>
           <Image 
