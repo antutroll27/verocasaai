@@ -1,45 +1,34 @@
 import type { Metadata } from "next";
-import {Space_Grotesk} from 'next/font/google'
+import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
-
 
 // Define the metadata for the application, which includes the title and description.
 // This metadata is used for SEO purposes and is displayed in the browser tab.
 // 'title' sets the name of the application, while 'description' provides a brief overview
 // of the app's functionality for users and search engines.
 export const metadata: Metadata = {
-  title: "VeroCasaAI",
-  description: "Your personal easy to use AI Interior Design APP",
+	title: "VeroCasaAI",
+	description: "Your personal easy to use AI Interior Design APP",
 };
 
-const spcgrtsk=Space_Grotesk({
-  
-  subsets:['latin']})
+const spcgrtsk = Space_Grotesk({
+	subsets: ["latin"],
+});
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    
-    <ClerkProvider>
-    <html lang="en">
-     
-      <body
-        className={`${spcgrtsk.className} bg-colors-custom-pastel`}
-      >
-        
-        <Provider>
-        {children}
-        </Provider>
-        
-      </body>
-      
-    </html>
-    </ClerkProvider>
-    
-  );
+	return (
+		<ClerkProvider redirectUrl={"http://localhost:3000/dashboard"}>
+			<html lang="en">
+				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
+					<Provider>{children}</Provider>
+				</body>
+			</html>
+		</ClerkProvider>
+	);
 }

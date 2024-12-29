@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
     try {
         const body = await req.json();
         const user = body.user as UserData;
-        
+
         console.log('Received user data:', user);
 
         if (!user?.primaryEmailAddress?.emailAddress) {
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
                 { status: 400 }
             );
         }
-        
+
 
         // Find existing user
         const userInfo = await db
@@ -84,7 +84,7 @@ export async function POST(req: NextRequest) {
             .where(eq(Users.id, existingUser.id))
             .returning();
 
-        console.log('Returning updated user:', updatedUser[0]);
+
         return NextResponse.json(
             { result: updatedUser[0] },
             { status: 200 }
@@ -93,7 +93,7 @@ export async function POST(req: NextRequest) {
     } catch (error) {
         console.error('Verify user error:', error);
         return NextResponse.json(
-            { 
+            {
                 error: 'Internal server error',
                 details: error instanceof Error ? error.message : 'Unknown error'
             },

@@ -1,0 +1,154 @@
+{
+  "id": "3a28d9e1-e083-4b45-86a8-5be3cc17f321",
+  "prevId": "8a9c5c32-9b97-4cf0-b18e-600b87f09180",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.RedesignedAIRoomImage": {
+      "name": "RedesignedAIRoomImage",
+      "schema": "",
+      "columns": {
+        "imageID": {
+          "name": "imageID",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "roomType": {
+          "name": "roomType",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "AIRedesignType": {
+          "name": "AIRedesignType",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "OgImage": {
+          "name": "OgImage",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "AIGeneratedImage": {
+          "name": "AIGeneratedImage",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "userEmail": {
+          "name": "userEmail",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
+    "public.users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "imageUrl": {
+          "name": "imageUrl",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "credits": {
+          "name": "credits",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 10
+        },
+        "subscription_status": {
+          "name": "subscription_status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'inactive'"
+        },
+        "subscription_type": {
+          "name": "subscription_type",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'free'"
+        },
+        "next_billing_date": {
+          "name": "next_billing_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "users_email_unique": {
+          "name": "users_email_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "email"
+          ]
+        },
+        "users_imageUrl_unique": {
+          "name": "users_imageUrl_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "imageUrl"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
