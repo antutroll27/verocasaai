@@ -188,7 +188,13 @@ function AiRedesign() {
 							/>
 							Manifest Revamped Room
 						</Button>
-						<p className="absolute top-0 right-0 text-colors-custom-purple text-sm pt-2 pr-2">
+						<p
+							className={`${
+								userDetail?.subscriptionType === "free"
+									? "text-red-500"
+									: "text-green-500"
+							} absolute top-0 right-0 text-sm pt-2 pr-2`}
+						>
 							* <strong>1</strong> Credit per Redesign
 						</p>
 					</div>
