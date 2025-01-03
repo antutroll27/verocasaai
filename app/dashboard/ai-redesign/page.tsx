@@ -182,12 +182,13 @@ function AiRedesign() {
 							<Image
 								src="/manifest.svg"
 								alt="credits"
-								width={20}
-								height={20}
+								width={25}
+								height={25}
 								className="inline-block mr-1"
 							/>
-							Manifest Revamped Room
+							<span className="tracking-wider">Generate Re-Designed Room</span>
 						</Button>
+						
 						{userDetail ? (
 							<p
 								className={`${
