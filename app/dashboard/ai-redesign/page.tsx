@@ -193,8 +193,8 @@ function AiRedesign() {
 							<p
 								className={`${
 									userDetail.subscriptionType === "free"
-										? "text-red-500"
-										: "text-green-500"
+										? "text-colors-custom-pink"
+										: "text-colors-custom-lightpurple"
 								} absolute top-0 right-0 text-base pt-1 pr-2`}
 							>
 								* {userDetail.subscriptionType === "free" 

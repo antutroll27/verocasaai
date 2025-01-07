@@ -17,10 +17,10 @@ const config: Config = {
   				foreground: 'hsl(var(--card-foreground))'
   			},
   			colors: {
-  				'custom-purple': '#674188',
-  				'custom-lightpurple': '#C8A1E0',
-  				'custom-pastel': '#F7EFE5',
-  				'custom-pink': '#E2BFD9'
+  				'custom-purple': '#0C2D57',
+  				'custom-lightpurple': '#FC6736',
+  				'custom-pastel': '#EFECEC',
+  				'custom-pink': '#FFB0B0'
   			},
   			popover: {
   				DEFAULT: 'hsl(var(--popover))',
