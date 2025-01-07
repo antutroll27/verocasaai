@@ -9,7 +9,7 @@ import Link from "next/link";
 
 function Header() {
 	return (
-		<div className="p-6 flex justify-around items-center ">
+		<div className="p-10 flex justify-around items-center ">
 			{/* Logo Section */}
 			<Image
 				src="/logo.svg"
@@ -19,9 +19,20 @@ function Header() {
 				className="object-contain" // Keeps image within bounds
 			/>
 
-			<div className="flex items-center gap-10 pr-5">
+			<div className="flex items-center gap-16 pr-5">
 				{/* Credits Display */}
-
+               <Link
+					href="/dashboard"
+					className="text-colors-custom-purple text-base"
+				>
+					Dashboard
+				</Link>
+				<Link
+					href="/dashboard/ai-redesign"
+					className="text-colors-custom-purple text-base"
+				>
+					Re-Design your Room
+				</Link>
 				<Link
 					href="/dashboard/purchase-credits"
 					className="text-colors-custom-purple text-base"

@@ -47,7 +47,7 @@ function Listing() {
 				<h2 className="text-6xl font-bold text-colors-custom-purple mb-10">
 					{user?.fullName}
 				</h2>
-				<p>credits {userData?.credits}</p>
+				
 			</div>
 			{userRoomList?.length === 0 ? (
 				<div>
