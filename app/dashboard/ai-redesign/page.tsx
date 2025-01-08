@@ -141,7 +141,7 @@ function AiRedesign() {
 	return (
 		<div>
 			{/* Heading text */}
-			<div className="pt-16">
+			<div className="pt-20">
 				<h2 className="text-5xl font-bold text-colors-custom-purple text-center ">
 					Never let Creative Block Stop you{" "}
 				</h2>
