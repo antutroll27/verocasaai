@@ -190,7 +190,7 @@ function AiRedesign() {
 						</Button>
 						<p
 							className={`${
-								userDetail?.subscriptionType === "free"
+								userDetail?.subscriptionType !== "free"
 									? "text-red-500"
 									: "text-green-500"
 							} absolute top-0 right-0 text-sm pt-2 pr-2`}
