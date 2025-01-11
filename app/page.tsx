@@ -1,11 +1,19 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import BannerSection from "@/components/home/banner";
+import FooterSection from "@/components/home/footer";
+import HowToUseSection from "@/components/home/howToUse";
+import Navbar from "@/components/home/navbar";
+import PricePlansSection from "@/components/home/pricePlans";
+import SliderSection from "@/components/home/slider";
 
 export default function Home() {
-  return (
-    <div>
-      <h2>Hello World</h2>
-      <Button className="bg-colors-custom-purple text-white">Click me</Button>
-    </div>
-  );
+	return (
+		<div>
+			<Navbar />
+			<BannerSection />
+			<HowToUseSection />
+			<SliderSection />
+			<PricePlansSection />
+			<FooterSection />
+		</div>
+	);
 }

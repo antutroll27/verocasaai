@@ -88,3 +88,39 @@ button, a, input, .interactive {
   z-index: 30;
   pointer-events: all;
 }
+
+
+.slider-container .swiper-slide img {
+	width: 100%;
+	object-fit: cover;
+	height: 285px;
+}
+
+@media screen and (max-width: 578px) {
+	.slider-container .swiper-slide img {
+		height: 200px;
+	}
+}
+
+.slider-container .slider-controler {
+	position: relative;
+	bottom: 0rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+}
+.slider-container .slider-controler div {
+	cursor: pointer;
+	border: 1px solid transparent;
+	border-radius: 50%;
+	padding: 2.5px 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: 0.3s ease;
+}
+.slider-container .slider-controler div:hover {
+	border: 1px solid currentColor;
+	transition: 0.3s ease;
+}
