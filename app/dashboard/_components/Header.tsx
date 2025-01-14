@@ -53,7 +53,7 @@ function Header() {
 					Buy Credits
 				</Link>
 
-				<div className="flex gap-3 items-center bg-colors-custom-pink px-4 py-1 rounded-md">
+				<div className="flex gap-3 items-center bg-colors-white px-4 py-1 rounded-md">
 					
 
 					
