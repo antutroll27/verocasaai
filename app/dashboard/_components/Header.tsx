@@ -25,10 +25,10 @@ function Header() {
 		<div className="p-10 flex justify-around items-center ">
 			{/* Logo Section */}
 			<Image
-				src="/logo.svg"
+				src="/verocasalogowhitehouse.png"
 				alt="logo"
-				width={150} // Larger width
-				height={150} // Larger height
+				width={200} // Larger width
+				height={200} // Larger height
 				className="object-contain" // Keeps image within bounds
 			/>
 
