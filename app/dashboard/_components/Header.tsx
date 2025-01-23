@@ -50,7 +50,7 @@ function Header() {
 					href="/dashboard/purchase-credits"
 					className="text-colors-custom-purple text-base"
 				>
-					Buy Credits
+					Purchase Plans
 				</Link>
 
 				<div className="flex gap-3 items-center bg-colors-white px-4 py-1 rounded-md">
