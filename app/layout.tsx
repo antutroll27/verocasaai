@@ -9,8 +9,11 @@ import Provider from "./provider";
 // 'title' sets the name of the application, while 'description' provides a brief overview
 // of the app's functionality for users and search engines.
 export const metadata: Metadata = {
-	title: "VeroCasaAI",
-	description: "Your personal easy to use AI Interior Design APP",
+	title: "VerocasaAI - AI-Powered Interior Design",
+	description: "Transform your space with AI-powered interior redesigns.",
+	icons: {
+		icon: "/favicon.ico",
+	  },
 };
 
 const spcgrtsk = Space_Grotesk({
