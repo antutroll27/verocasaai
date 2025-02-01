@@ -16,11 +16,11 @@ export const metadata: Metadata = {
 	  },
 };
 
-const spcgrtsk = Space_Grotesk({
+const spcgrtsk = Space_Grotesk({ 
 	subsets: ["latin"],
 });
 
-export default function RootLayout({
+export default function RootLayout({   
 	children,
 }: Readonly<{
 	children: React.ReactNode;

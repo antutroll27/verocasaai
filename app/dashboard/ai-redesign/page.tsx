@@ -100,7 +100,7 @@ function AiRedesign() {
 			}
 
 			// Deduct credits
-			await deductCredits();
+			//await deductCredits();
 
 			setAIOutputImage(result.data.result);
 			setOutputImageDialog(true);
@@ -114,7 +114,7 @@ function AiRedesign() {
 		}
 	};
 
-	const deductCredits = async () => {
+	/* const deductCredits = async () => {
 		if (!userDetail || !userDetail.id) {
 			throw new Error("User details are not available");
 		}
@@ -136,7 +136,7 @@ function AiRedesign() {
 		} else {
 			throw new Error("Failed to update credits in the database.");
 		}
-	};
+	};*/
 
 	return (
 		<div>
