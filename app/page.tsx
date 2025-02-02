@@ -1,3 +1,4 @@
+'use client'
 import BannerSection from "@/components/home/banner";
 import FooterSection from "@/components/home/footer";
 import HowToUseSection from "@/components/home/howToUse";
