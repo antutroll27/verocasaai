@@ -32,22 +32,18 @@ export default function RootLayout({
 			<html lang="en">
 				<head>
 					<Script
-						id="cookiebot"
+						id="Cookiebot"
 						src="https://consent.cookiebot.com/uc.js"
 						data-cbid="1676e844-56d7-414d-83b3-e79ae790129b"
-						strategy="afterInteractive"
+						data-blockingmode="auto"
+						strategy="beforeInteractive"
 						type="text/javascript"
 					/>
 					<Script
-						id="cookiebot-declarations"
-						strategy="afterInteractive"
-						dangerouslySetInnerHTML={{
-							__html: `
-							window.addEventListener('CookiebotOnLoad', function () {
-								console.log('Cookiebot loaded');
-							});
-						`,
-						}}
+						id="CookieDeclaration"
+						src="https://consent.cookiebot.com/1676e844-56d7-414d-83b3-e79ae790129b/cd.js"
+						strategy="beforeInteractive"
+						type="text/javascript"
 					/>
 				</head>
 				<body suppressHydrationWarning className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
