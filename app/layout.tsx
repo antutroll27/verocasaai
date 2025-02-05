@@ -1,9 +1,10 @@
+''
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
-import ReactCookieBot from "react-cookiebot";
+import ClientCookieBot from '@/components/ui/CookieBot'
 
 // Define the metadata for the application
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ const spcgrtsk = Space_Grotesk({
 });
 
 // Cookie bot domain group ID
-const COOKIE_BOT_ID = "1676e844-56d7-414d-83b3-e79ae790129b";
+
 
 export default function RootLayout({   
 	children,
@@ -35,7 +36,7 @@ export default function RootLayout({
 		<ClerkProvider redirectUrl={redirectUrl}>
 			<html lang="en">
 				<body suppressHydrationWarning className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
-					<ReactCookieBot domainGroupId={COOKIE_BOT_ID} />
+				<ClientCookieBot />
 					<Provider>{children}</Provider>
 				</body>
 			</html>
