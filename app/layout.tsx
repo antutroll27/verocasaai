@@ -31,19 +31,13 @@ export default function RootLayout({
 		<ClerkProvider redirectUrl={"http://localhost:3000/dashboard"}>
 			<html lang="en">
 				<head>
-					<Script
+					<script
 						id="Cookiebot"
 						src="https://consent.cookiebot.com/uc.js"
 						data-cbid="1676e844-56d7-414d-83b3-e79ae790129b"
 						data-blockingmode="auto"
-						strategy="beforeInteractive"
 						type="text/javascript"
-					/>
-					<Script
-						id="CookieDeclaration"
-						src="https://consent.cookiebot.com/1676e844-56d7-414d-83b3-e79ae790129b/cd.js"
-						strategy="beforeInteractive"
-						type="text/javascript"
+						async
 					/>
 				</head>
 				<body suppressHydrationWarning className={`${spcgrtsk.className} bg-colors-custom-pastel`}>

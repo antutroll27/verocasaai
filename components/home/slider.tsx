@@ -1,11 +1,50 @@
 "use client";
 import React from "react";
+
+declare global {
+	interface Window {
+		Cookiebot?: {
+			consent: boolean;
+		};
+	}
+}
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Virtual } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
 export default function SliderSection() {
+	const [isClient, setIsClient] = React.useState(false);
+	const [isCookiebotReady, setIsCookiebotReady] = React.useState(false);
+
+	React.useEffect(() => {
+		const checkCookiebot = () => {
+			if (window.Cookiebot && window.Cookiebot.consent) {
+				setIsCookiebotReady(true);
+			}
+		};
+
+		// Check immediately
+		checkCookiebot();
+
+		// Also check when Cookiebot's consent changes
+		window.addEventListener('CookiebotOnAccept', checkCookiebot);
+		window.addEventListener('CookiebotOnDecline', checkCookiebot);
+
+		return () => {
+			window.removeEventListener('CookiebotOnAccept', checkCookiebot);
+			window.removeEventListener('CookiebotOnDecline', checkCookiebot);
+		};
+	}, []);
+
+	React.useEffect(() => {
+		setIsClient(true);
+	}, []);
+
+	if (!isClient || !isCookiebotReady) {
+		return null;
+	}
+
 	return (
 		<section className="pt-28 sm:pb-64 pb-28 bg-[#FFB0B0]" id="sample">
 			<div className="w-full lg:max-w-6xl mx-auto px-6">
@@ -21,8 +60,9 @@ export default function SliderSection() {
 						spaceBetween={30}
 						slidesPerView={3}
 						navigation={true}
-						modules={[Navigation]}
+						modules={[Navigation, Virtual]}
 						className="mySwiper"
+						virtual={true}
 					>
 						<SwiperSlide>
 							<img src="./img/slider/before1.png" alt="before after" className="w-full h-auto" />
