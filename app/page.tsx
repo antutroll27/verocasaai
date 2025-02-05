@@ -12,7 +12,7 @@ export default function Home() {
 			<Navbar />
 			<BannerSection />
 			<HowToUseSection />
-			
+			<SliderSection />
 			<PricePlansSection />
 			<FooterSection />
 		</div>
