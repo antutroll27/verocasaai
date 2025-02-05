@@ -31,9 +31,26 @@ export default function RootLayout({
 		<ClerkProvider redirectUrl={"http://localhost:3000/dashboard"}>
 			<html lang="en">
 				<head>
-					<Script id="cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1676e844-56d7-414d-83b3-e79ae790129b" strategy="beforeInteractive" />
+					<Script
+						id="cookiebot"
+						src="https://consent.cookiebot.com/uc.js"
+						data-cbid="1676e844-56d7-414d-83b3-e79ae790129b"
+						strategy="afterInteractive"
+						type="text/javascript"
+					/>
+					<Script
+						id="cookiebot-declarations"
+						strategy="afterInteractive"
+						dangerouslySetInnerHTML={{
+							__html: `
+							window.addEventListener('CookiebotOnLoad', function () {
+								console.log('Cookiebot loaded');
+							});
+						`,
+						}}
+					/>
 				</head>
-				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
+				<body suppressHydrationWarning className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
 					
 					<Provider>{children}</Provider>
 				</body>
