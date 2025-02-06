@@ -3,7 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
-import ClientCookieBot from "@/components/ui/CookieBot";
+import Script from "next/script";
 
 // Define the metadata for the application
 export const metadata: Metadata = {
@@ -31,8 +31,11 @@ export default function RootLayout({
 	return (
 		<ClerkProvider redirectUrl={redirectUrl}>
 			<html lang="en">
+			<head>
+					<Script id="cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1676e844-56d7-414d-83b3-e79ae790129b" strategy="beforeInteractive" />
+				</head>
 				<body suppressHydrationWarning className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
-					<ClientCookieBot />
+					
 					<Provider>{children}</Provider>
 				</body>
 			</html>
