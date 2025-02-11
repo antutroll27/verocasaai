@@ -33,7 +33,19 @@ export async function POST(req: Request) {
   try {
     const input = {
       image: imageUrl,
-      prompt: `A ${room} with a ${aiRedesign} style interior, Make it look Realistic if possible${customPrompt}`,
+      prompt: `Professional interior design visualization of a ${room}:
+[Subject] Redesigned in ${aiRedesign} style
+[Details] 
+- High-resolution textures for natural materials: wood grain, stone surfaces, fabric draping
+- Soft diffused lighting with subtle volumetric rays
+- Balanced composition using rule-of-thirds
+- Ultra HD 8k resolution with cinematic depth of field
+[Safeguards]
+1. Maintain structural integrity of doors/windows unless specified
+2. Ensure proper perspective alignment
+3. Avoid unrealistic texture stretching
+4. Preserve functional elements per original layout
+Custom requirements: ${customPrompt}`,
     };
 
     const output = await replicate.run(
