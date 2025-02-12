@@ -31,7 +31,7 @@ interface AIResponse {
 
 function AiRedesign() {
 	const { user } = useUser(); // Get user information from Clerk
-	const { userDetail, setUserDetail } = useContext(UserDataContext);
+	const { userDetail, isLoading } = useContext(UserDataContext);
 	const [formData, setFormData] = useState<FormData>({});
 	const [loading, setLoading] = useState(false); // Loading state for async operations
 	const [AIOutputImage, setAIOutputImage] = useState<string | undefined>(); // State to hold AI generated image
@@ -51,11 +51,14 @@ function AiRedesign() {
 		console.log(formData); // Log current form data for debugging
 	};
 
-	useEffect(() => {
-		if (!userDetail) {
-			console.error("User details are missing or not provided in context");
-		}
-	}, [userDetail]);
+	// Show loading state while user data is being fetched
+	if (isLoading) {
+		return (
+			<div className="flex items-center justify-center min-h-screen">
+				<Loading loading={true} />
+			</div>
+		);
+	}
 
 	// Save user-uploaded image to Firebase and return its URL
 	const SaveUserImageToFirebase = async () => {
@@ -141,7 +144,7 @@ function AiRedesign() {
 	return (
 		<div>
 			{/* Heading text */}
-			<div className="pt-20">
+			<div className="pt-40">
 				<h2 className="text-5xl font-bold text-colors-custom-purple text-center ">
 					Never let Creative Block Stop you{" "}
 				</h2>
