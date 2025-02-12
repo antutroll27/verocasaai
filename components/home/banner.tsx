@@ -6,9 +6,9 @@ export default function BannerSection() {
 		<section className="pt-20 sm:pb-28 pb-16 bg-[#EFECEC]">
 			<div className="w-full lg:max-w-6xl mx-auto px-6 ">
 				<h1 className="text-center text-5xl lg:text-[120px] lg:leading-[153px] font-bold text-[#0C2D57] mb-8">
-					Transform your
+					Transform & Remodel your
 					<br />
-					Room with <span className="text-[#FC6736]">AI</span>
+					Rooms in a Few <span className="text-[#FC6736]">Clicks</span>
 				</h1>
 				<div className="flex flex-col flex-col-reverse xl:flex-row">
 					<div className="w-full lg:w-2/5 ml-0 lg:ml-32 mt-0 lg:mt-8">
