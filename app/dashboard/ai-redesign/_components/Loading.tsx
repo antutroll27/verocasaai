@@ -21,16 +21,18 @@ function Loading({ loading }: loadingstate) {
   return (
     <AlertDialog open={loading}>
       <AlertDialogContent>
-      <div className='bg-white flex flex-col items-center my-4'>
-        
-        <DotLottieReact
-          src="https://lottie.host/cb2edcaf-6cfc-4f71-b9ae-8c44128a1b71/Aj3KDstryz.lottie"
-          loop
-          autoplay
-          style={{ width: '200px', height: '100px' }}
-        />
-        <h2 className='text-sm text-colors-custom-lightpurple'>Your room is being Redesigned ,  <strong> Don't Reload</strong> </h2>
-      </div>
+        <AlertDialogTitle className="text-2xl font-bold text-center">
+          Generating Your Dream Design
+        </AlertDialogTitle>
+        <div className="flex flex-col items-center gap-4">
+          <DotLottieReact
+            src="https://lottie.host/cb2edcaf-6cfc-4f71-b9ae-8c44128a1b71/Aj3KDstryz.lottie"
+            loop
+            autoplay
+            style={{ width: '200px', height: '100px' }}
+          />
+          <h2 className='text-sm text-colors-custom-lightpurple'>Your room is being Redesigned ,  <strong> Don't Reload</strong> </h2>
+        </div>
       </AlertDialogContent>
     </AlertDialog>
 
@@ -38,7 +40,3 @@ function Loading({ loading }: loadingstate) {
 }
 
 export default Loading
-
-
-
-

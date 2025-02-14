@@ -12,7 +12,7 @@ import { UserDataContext } from "@/app/_context/UserDataContext";
 
 function Listing() {
 	const { user } = useUser();
-	const [userRoomList, setUserRoomList] = useState([]);
+	const [userRoomList, setUserRoomList] = useState<Array<{ id: string; createdAt: string }>>([]);
 	const { userDetail } = useContext(UserDataContext);
 
 	// Get the first element of the array if userDetail is an array
@@ -28,8 +28,11 @@ function Listing() {
 				const response = await fetch(`/api/userRooms?email=${userEmail}`);
 				if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
 				const data = await response.json();
-				setUserRoomList(data);
-				console.log(data);
+				const sortedRooms = data.sort((a, b) => 
+					new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+				);
+				setUserRoomList(sortedRooms);
+				console.log(sortedRooms);
 			} catch (error) {
 				console.error("Fetch error:", error);
 			}

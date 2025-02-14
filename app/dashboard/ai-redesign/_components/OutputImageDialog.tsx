@@ -3,6 +3,7 @@ import {
 	AlertDialog,
 	AlertDialogContent,
 	AlertDialogHeader,
+	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
@@ -26,6 +27,9 @@ function OutputImageDialog({
 		<div>
 			<AlertDialog open={openImageDialog}>
 				<AlertDialogContent>
+					<AlertDialogTitle className="text-2xl font-bold mb-4">
+						Your AI Redesign
+					</AlertDialogTitle>
 					<AlertDialogHeader>
 						<h2 className="text-2xl font-bold text-colors-custom-purple mb-5">
 							Redesigned Result{" "}
