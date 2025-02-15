@@ -33,7 +33,7 @@ export default function RootLayout({
 				<head>
 					<Script id="cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="1676e844-56d7-414d-83b3-e79ae790129b" strategy="beforeInteractive" />
 				</head>
-				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`}>
+				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
 					
 					<Provider>{children}</Provider>
 				</body>

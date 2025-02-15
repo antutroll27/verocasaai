@@ -77,13 +77,17 @@ Custom requirements: ${customPrompt}`,
 
 
     //Save Data to our PGDatabase
-    const savetoDb = await db.insert(RedesignedAIRoomImage).values({
-      roomType: room,
-      AIRedesignType: aiRedesign,
-      OgImage: imageUrl,
-      AIGeneratedImage: downloadURL,
-      userEmail: userEmail || 'anonymous',
-    }).returning({ id: RedesignedAIRoomImage.imageID });
+    const [savetoDb] = await db
+      .insert(RedesignedAIRoomImage)
+      .values({
+        roomType: body.room,
+        AIRedesignType: body.aiRedesign,
+        OgImage: body.imageUrl,
+        AIGeneratedImage: downloadURL,
+        userEmail: body.userEmail,
+        createdAt: new Date()
+      })
+      .returning({ id: RedesignedAIRoomImage.imageID });
     console.log(savetoDb);
     return NextResponse.json({ 'result': downloadURL });
 

@@ -10,9 +10,18 @@ import { db } from "@/config";
 import RoomRedesigns from "./RoomRedesigns";
 import { UserDataContext } from "@/app/_context/UserDataContext";
 
+interface Room {
+  id: number;
+  createdAt: string;
+  AIGeneratedImage: string;
+  OgImage: string;
+  roomType: string;
+  AIRedesignType: string;
+}
+
 function Listing() {
 	const { user } = useUser();
-	const [userRoomList, setUserRoomList] = useState<Array<{ id: string; createdAt: string }>>([]);
+	const [userRoomList, setUserRoomList] = useState<Room[]>([]);
 	const { userDetail } = useContext(UserDataContext);
 
 	// Get the first element of the array if userDetail is an array
@@ -27,10 +36,12 @@ function Listing() {
 			try {
 				const response = await fetch(`/api/userRooms?email=${userEmail}`);
 				if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-				const data = await response.json();
-				const sortedRooms = data.sort((a, b) => 
-					new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-				);
+				const data = await response.json() as Room[];
+				const sortedRooms = data.sort((a, b) => {
+					const timeCompare = new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+					// If timestamps are equal, sort by numeric id
+					return timeCompare === 0 ? Number(b.id) - Number(a.id) : timeCompare;
+				});
 				setUserRoomList(sortedRooms);
 				console.log(sortedRooms);
 			} catch (error) {
@@ -66,7 +77,7 @@ function Listing() {
 							Your Gallery
 						</h2>
 						<Link href={"/dashboard/ai-redesign"}>
-							<Button className="bg-colors-custom-purple hover:bg-colors-custom-purple/70 transition-all duration-200 flex items-center gap-2 py-3 px-6">
+							<Button className="rounded-none bg-colors-custom-purple hover:bg-colors-custom-purple/70 transition-all duration-200 flex items-center gap-2 py-3 px-6 text-sm">
 								<span className="tracking-[0.1em]">RE-DESIGN ROOM WITH AI</span>
 								<svg
 									xmlns="http://www.w3.org/2000/svg"

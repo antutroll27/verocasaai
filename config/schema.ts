@@ -1,4 +1,3 @@
-
 import { pgTable, varchar, integer, serial, timestamp } from "drizzle-orm/pg-core";
 
 {/* User Details schema */ }
@@ -24,6 +23,5 @@ export const RedesignedAIRoomImage = pgTable('RedesignedAIRoomImage', {
     OgImage: varchar('OgImage').notNull(),
     AIGeneratedImage: varchar('AIGeneratedImage').notNull(),
     userEmail: varchar('userEmail'),
-}
-
-);
+    createdAt: timestamp('createdAt').defaultNow()
+});
