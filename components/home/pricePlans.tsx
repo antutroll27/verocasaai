@@ -14,7 +14,7 @@ const pricingPlans = [
 	{
 		name: "Premium Yearly",
 		subtitle: "No ADs, Smooth Service",
-		price: "149.99",
+		price: "99.99",
 		period: "/ yearly",
 		features: [
 			"Unlimited Designs",
@@ -28,7 +28,7 @@ const pricingPlans = [
 	{
 		name: "Premium Monthly",
 		subtitle: "Premium, but Monthly Paid ",
-		price: "14.99",
+		price: "9.99",
 		period: "/ month",
 		features: [
 			"Unlimited Designs",
