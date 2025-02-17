@@ -54,7 +54,7 @@ function Listing() {
 			{" "}
 			{/* Added container with max width */}
 			<div className="mt-20">
-				<h2 className="text-6xl font-bold text-colors-custom-lightpurple mb-4">
+				<h2 className="text-6xl font-bold text-colors-custom-pink mb-4">
 					Never run out of Ideas{" "}
 				</h2>
 

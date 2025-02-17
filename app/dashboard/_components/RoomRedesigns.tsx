@@ -28,15 +28,17 @@ function RoomRedesigns({ room }: { room: Room }) {
         secondImage={{
           imageUrl: room?.OgImage
         }} />
-      <div className="bg-pink-200 p-4 mt-2">
-        <div className="text-sm font-light mb-2">#{room?.id}</div>
-        <div className="text-right text-sm font-light">{room?.createdAt}</div>
+      <div className="bg-colors-custom-pink p-4 mt-2 text-colors-custom-purple">
+        <div className="flex justify-between items-center mb-5">
+          <div className="text-xs font-light">#{room?.id}</div>
+          <div className="text-xs font-light">{room?.createdAt}</div>
+        </div>
         <div>
-          <span className="text-base font-bold">Room Type: </span>
+          <span className="text-base font-light">Room Type : </span>
           <span className="text-base font-bold">{room?.roomType}</span>
         </div>
         <div>
-          <span className="text-base font-bold">Design Type: </span>
+          <span className="text-base font-light">Design Type : </span>
           <span className="text-base font-bold">{room?.AIRedesignType}</span>
         </div>
       </div>
