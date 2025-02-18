@@ -23,21 +23,21 @@ function ImageUpload({ selectedImage }: { selectedImage: (file: File) => void })
       
        <div>
         <label htmlFor='image-upload'>
-             <div className={`-mt-8 p-36 bg-neutral-50 rounded-2xl flex justify-center cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-colors-custom-pink
+             <div className={`p-8 sm:p-12 md:p-16 bg-neutral-50 rounded-2xl flex justify-center items-center cursor-pointer transition-all duration-300 hover:shadow-lg hover:bg-colors-custom-pink
               ${file&&'p-0 bg-colors-custom-pastel shadow-lg'} `}>
                 {!file ? <Image 
                  src='/uploadtheimage.svg' 
                  alt='Upload Image'
-                 width={300} 
-                 height={300} 
-                 className='-mt-20'
+                 width={280} 
+                 height={280} 
+                 className='w-[200px] sm:w-[250px] md:w-[280px] h-auto'
                  /> 
                  : <Image src={URL.createObjectURL(file)}
                  alt='uploaded-file'
-                 width={300} 
-                 height={300}
+                 width={280} 
+                 height={280}
                  
-                 className='w-[300px] h-[300px] object-contain'/> }
+                 className='w-[200px] sm:w-[250px] md:w-[280px] h-auto object-contain rounded-xl'/> }
                 
              </div>
 
