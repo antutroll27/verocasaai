@@ -20,15 +20,16 @@ const yearlyPriceId = process.env.NEXT_PUBLIC_STRIPE_YEARLY_PRICE_ID || "price_X
 const pricingPlans = [
   {
     name: "Free",
-    subtitle: "No Charges , just Advertisements",
+    subtitle: "No Charges, just Advertisements",
     price: "0",
     period: "/ month",
     features: ["Unlimited Designs", "Advertisements after every Redesign"],
-    buttonText: "Upgrade",
+    buttonText: "Current Plan",
     highlighted: true,
+    type: "free"
   },
   {
-    name: "Premium Yearly",
+    name: "Yearly Premium",
     subtitle: "No ADs, Smooth Service",
     price: "99.99",
     period: "/ yearly",
@@ -40,9 +41,10 @@ const pricingPlans = [
     ],
     buttonText: "Upgrade",
     highlighted: true,
+    type: "yearly"
   },
   {
-    name: "Premium Monthly",
+    name: "Monthly Premium",
     subtitle: "Premium, but Monthly Paid",
     price: "9.99",
     period: "/ month",
@@ -54,6 +56,7 @@ const pricingPlans = [
     ],
     buttonText: "Upgrade",
     highlighted: true,
+    type: "monthly"
   },
 ];
 
@@ -63,56 +66,29 @@ function PurchaseSubscription() {
   const [selectedPrice, setSelectedPrice] = useState<{
     name: string;
     price: number;
+    type: string;
   } | null>(null);
-
-  // 3) Optional: update user’s subscription in DB after success
-  const onPaymentSuccess = async () => {
-    if (!userDetail || !selectedPrice) return;
-
-    try {
-      const result = await db
-        .update(Users)
-        .set({
-          subscriptionStatus: "active",
-          subscriptionType: selectedPrice.name,
-          nextBillingDate: new Date(
-            selectedPrice.name.includes("Monthly")
-              ? new Date().setMonth(new Date().getMonth() + 1)
-              : new Date().setFullYear(new Date().getFullYear() + 1)
-          ),
-        })
-        .where(eq(Users.id, userDetail.id))
-        .returning();
-
-      if (result) {
-        const updatedUser: UserDetailType = {
-          ...userDetail,
-          subscriptionStatus: "active",
-          subscriptionType: selectedPrice.name,
-          nextBillingDate: new Date(),
-        };
-        setUserDetail(updatedUser);
-
-        router.push("/dashboard");
-      }
-    } catch (error) {
-      console.error("Error updating subscription:", error);
-    }
-  };
+  const [isLoading, setIsLoading] = useState(false);
 
   // 4) Create the Checkout session and redirect
   const handleCheckout = async () => {
-    if (!selectedPrice) return;
+    if (!selectedPrice || !userDetail) {
+      alert("Please select a pricing plan or login to continue");
+      return;
+    }
+
+    setIsLoading(true);
 
     try {
       // Pick the right Price ID
       let priceId: string;
-      if (selectedPrice.name.includes("Monthly")) {
+      if (selectedPrice.type === "monthly") {
         priceId = monthlyPriceId;
-      } else if (selectedPrice.name.includes("Yearly")) {
+      } else if (selectedPrice.type === "yearly") {
         priceId = yearlyPriceId;
       } else {
         alert("Free plan does not require checkout");
+        setIsLoading(false);
         return;
       }
 
@@ -120,9 +96,14 @@ function PurchaseSubscription() {
       const res = await fetch("/api/stripe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ 
+          priceId,
+          userEmail: userDetail.email // Include the user's email
+        }),
       });
+      
       const data = await res.json();
+      
       if (!data.sessionId) {
         throw new Error(data.error || "No sessionId returned");
       }
@@ -132,7 +113,9 @@ function PurchaseSubscription() {
       await stripe?.redirectToCheckout({ sessionId: data.sessionId });
     } catch (error: any) {
       console.error("Stripe checkout error:", error);
-      alert(error.message);
+      alert(`Payment error: ${error.message || "Unknown error occurred"}`);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -182,11 +165,17 @@ function PurchaseSubscription() {
                 <div className="mt-2 pt-2">
                   <button
                     onClick={() =>
-                      setSelectedPrice({ name: plan.name, price: Number(plan.price) })
+                      setSelectedPrice({ 
+                        name: plan.name, 
+                        price: Number(plan.price),
+                        type: plan.type
+                      })
                     }
-                    className="bg-[#0C2D57] text-white min-w-[142px] py-2 px-8"
+                    className={`bg-[#0C2D57] text-white min-w-[142px] py-2 px-8 ${
+                      selectedPrice?.name === plan.name ? "ring-2 ring-[#FC6736]" : ""
+                    }`}
                   >
-                    {plan.buttonText}
+                    {selectedPrice?.name === plan.name ? "Selected" : plan.buttonText}
                   </button>
                 </div>
               )}
@@ -195,14 +184,26 @@ function PurchaseSubscription() {
         </div>
       </div>
 
-      {/* 5) Replace PayPal with a Stripe Checkout button */}
+      {/* Checkout button */}
       <div className="mt-20 flex justify-center">
         {selectedPrice && (
-          <Button onClick={handleCheckout}>
-            Checkout with Stripe
+          <Button 
+            onClick={handleCheckout}
+            disabled={isLoading}
+            className="bg-[#FC6736] hover:bg-[#e55a2e] text-white py-3 px-6 rounded-md text-lg"
+          >
+            {isLoading ? "Processing..." : `Checkout with Stripe - $${selectedPrice.price}`}
           </Button>
         )}
       </div>
+      
+      {/* Add information about the subscription */}
+      {selectedPrice && (
+        <div className="mt-8 text-center text-sm text-colors-custom-purple">
+          <p>By subscribing, you'll get unlimited AI redesigns without advertisements.</p>
+          <p>You'll receive a confirmation email after your payment is processed.</p>
+        </div>
+      )}
     </div>
   );
 }

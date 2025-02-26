@@ -1,13 +1,39 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
+import { getAuth } from "@clerk/nextjs/server";
 
+// Initialize Stripe
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-01-27.acacia",
 });
 
-export async function POST(req: Request) {
+// Define price IDs
+const PRICE_IDS = {
+  MONTHLY: process.env.STRIPE_MONTHLY_PRICE_ID || "price_XXX_monthly",
+  YEARLY: process.env.STRIPE_YEARLY_PRICE_ID || "price_XXX_yearly"
+};
+
+export async function POST(req: NextRequest) {
   try {
-    const { priceId } = await req.json(); // the Price ID from the client
+    // Get auth session
+    const { userId } = await getAuth(req);
+    
+    // Ensure user is authenticated
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Get request data
+    const { priceId, userEmail } = await req.json();
+    
+    if (!priceId) {
+      return NextResponse.json({ error: "Price ID is required" }, { status: 400 });
+    }
+
+    // Determine the success URL with app URL from environment
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://verocasaai.com";
+    const successUrl = `${appUrl}/dashboard?session_id={CHECKOUT_SESSION_ID}`;
+    const cancelUrl = `${appUrl}/dashboard/purchase-credits`;
 
     // Create a Checkout Session for a subscription
     const session = await stripe.checkout.sessions.create({
@@ -19,10 +45,14 @@ export async function POST(req: Request) {
           quantity: 1,
         },
       ],
-      // After success, redirect user here
-      success_url: `https://verocasaai.com/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+      metadata: {
+        userId: userId,
+      },
+      customer_email: userEmail, // Pass the user's email for easier identification
+      // After success, redirect user here with the session ID
+      success_url: successUrl,
       // If user cancels, redirect them here
-      cancel_url: `https://verocasaai.com/dashboard/purchase-credits`,
+      cancel_url: cancelUrl,
     });
 
     // Return the session ID to the client
