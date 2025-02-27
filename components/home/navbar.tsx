@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Navbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,7 +51,9 @@ export default function Navbar() {
 						Sign Up
 					</a>
 					<a
-						href="#"
+						href="https://ko-fi.com/verocasa"
+						target="_blank"
+						rel="noopener noreferrer"
 						className="bg-[#FFB0B0] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
 					>
 						<svg
@@ -156,8 +159,11 @@ export default function Navbar() {
 				>
 					Sign Up
 				</a>
+				{/* Support Us button - Links to Ko-fi donation page */}
 				<a
 					href="https://ko-fi.com/verocasa"
+					target="_blank"
+					rel="noopener noreferrer"
 					className="bg-[#FFB0B0] w-[130px] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
 				>
 					<svg
