@@ -157,7 +157,7 @@ export default function Navbar() {
 					Sign Up
 				</a>
 				<a
-					href="#"
+					href="https://ko-fi.com/verocasa"
 					className="bg-[#FFB0B0] w-[130px] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
 				>
 					<svg
