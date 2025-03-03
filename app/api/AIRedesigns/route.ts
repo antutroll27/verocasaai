@@ -40,10 +40,7 @@ export async function POST(req: Request) {
 - Maintain original room proportions and ceiling height
 - Keep same viewing angle and camera position as source image
 [Details]
-- High-resolution textures for natural materials: wood grain, stone surfaces, fabric draping
-- Natural indirect lighting with subtle ambient occlusion
 - Architectural accuracy in all structural elements
-- Ultra HD 8k resolution with photorealistic rendering
 [Critical Safeguards]
 1. STRICT preservation of window size, shape, and position
 2. Match original room depth and width precisely
