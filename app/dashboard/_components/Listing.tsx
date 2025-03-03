@@ -54,11 +54,11 @@ function Listing() {
 			{" "}
 			{/* Added container with max width */}
 			<div className="mt-20">
-				<h2 className="text-6xl font-bold text-colors-custom-pink mb-4">
+				<h2 className="text-6xl font-bold text-colors-custom-pink mb-8">
 					Never run out of Ideas{" "}
 				</h2>
 
-				<h2 className="text-6xl font-bold text-colors-custom-purple mb-10">
+				<h2 className="text-5xl font-bold text-colors-custom-purple mb-10" style={{ fontFamily: 'Tomatoes, sans-serif' }}>
 					{user?.fullName}
 				</h2>
 				

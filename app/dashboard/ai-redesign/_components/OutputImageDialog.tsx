@@ -27,13 +27,10 @@ function OutputImageDialog({
 		<div>
 			<AlertDialog open={openImageDialog}>
 				<AlertDialogContent>
-					<AlertDialogTitle className="text-2xl font-bold mb-4">
+					<AlertDialogTitle className="text-2xl font-bold mb-4 text-colors-custom-purple">
 						Your AI Redesign
 					</AlertDialogTitle>
 					<AlertDialogHeader>
-						<h2 className="text-2xl font-bold text-colors-custom-purple mb-5">
-							Redesigned Result{" "}
-						</h2>
 						<ReactBeforeSliderComponent
 							firstImage={{
 								imageUrl: afterAiImage || "",

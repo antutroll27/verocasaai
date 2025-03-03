@@ -28,10 +28,10 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<ClerkProvider redirectUrl={"http://localhost:3000/dashboard"}>
+		<ClerkProvider >
 			<html lang="en">
 				<head>
-					<CookiebotScript />
+					<CookiebotScript /> 
 				</head>
 				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
 					
