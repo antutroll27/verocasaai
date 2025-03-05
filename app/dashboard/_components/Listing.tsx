@@ -73,9 +73,7 @@ function Listing() {
 					<div className="flex justify-between items-center mb-10 max-w-full">
 						{" "}
 						{/* Added max-w-full */}
-						<h2 className="text-3xl font-bold text-primary mb-9">
-							Your Gallery
-						</h2>
+						
 						<Link href={"/dashboard/ai-redesign"}>
 							<Button className="rounded-none bg-colors-custom-purple hover:bg-colors-custom-purple/70 transition-all duration-200 flex items-center gap-2 py-3 px-6 text-sm">
 								<span className="tracking-[0.1em]">RE-DESIGN ROOM WITH AI</span>
