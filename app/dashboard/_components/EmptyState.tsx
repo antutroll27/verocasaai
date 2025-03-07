@@ -9,7 +9,7 @@ function EmptyState() {
       <div className="text-center mb-6 mt-20">
         <h1 className="text-8xl font-bold mb-5">
           <span className="text-colors-custom-pink">Empty ?</span>
-          <span className="text-colors-custom-purple"> Perfect. Let's build something memorable :) </span>
+          <span className="text-colors-custom-purple"> Perfect. Let's Design something memorable :) </span>
         </h1>
       </div>
       
