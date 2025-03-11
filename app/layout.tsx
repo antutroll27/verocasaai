@@ -31,6 +31,7 @@ export default function RootLayout({
 		<ClerkProvider >
 			<html lang="en">
 				<head>
+				
 					<CookiebotScript /> 
 				</head>
 				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
