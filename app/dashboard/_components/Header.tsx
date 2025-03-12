@@ -7,11 +7,22 @@ import { Users } from "@/config/schema";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [localLoading, setLocalLoading] = useState(true);
   const { userDetail, isLoading } = useContext(UserDataContext);
 
-  const subscriptionStatus = userDetail?.subscriptionType || "free";
+  // Only set subscription status when we have valid data
+  const subscriptionStatus = userDetail?.subscriptionType;
+  
+  // Use useEffect to ensure we don't show FREE TIER briefly
+  useEffect(() => {
+    // Keep local loading state true until context loading is complete
+    if (!isLoading) {
+      setLocalLoading(false);
+    }
+  }, [isLoading]);
 
   const navLinks = [
     { href: "/dashboard", label: "Dashboard" },
@@ -49,7 +60,7 @@ function Header() {
               <h2
                 className={`font-bold text-sm md:text-base ${
                   subscriptionStatus === "free" ? "text-red-500" : "text-green-500"
-                }`}
+                } ${localLoading ? "invisible" : "visible"}`}
               >
                 {subscriptionStatus === "free" ? "FREE TIER" : "PREMIUM TIER"}
               </h2>
@@ -106,7 +117,7 @@ function Header() {
                 <h2
                   className={`font-bold text-sm ${
                     subscriptionStatus === "free" ? "text-red-500" : "text-green-500"
-                  }`}
+                  } ${localLoading ? "invisible" : "visible"}`}
                 >
                   {subscriptionStatus === "free" ? "FREE TIER" : "PREMIUM TIER"}
                 </h2>
