@@ -21,12 +21,12 @@ function Loading({ loading }: loadingstate) {
   return (
     <AlertDialog open={loading}>
       <AlertDialogContent>
-        <AlertDialogTitle className="text-2xl font-bold text-center">
+        <AlertDialogTitle className="text-2xl font-bold text-center text-colors-custom-lightpurple">
           Generating Your Dream Design
         </AlertDialogTitle>
         <div className="flex flex-col items-center gap-4">
           <DotLottieReact
-            src="https://lottie.host/cb2edcaf-6cfc-4f71-b9ae-8c44128a1b71/Aj3KDstryz.lottie"
+            src="https://lottie.host/3eb7e43b-f0c6-4bc9-8a34-6c3ce5d42e5e/F07wilByKb.lottie"
             loop
             autoplay
             style={{ width: '200px', height: '100px' }}
