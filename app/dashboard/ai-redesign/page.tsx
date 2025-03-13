@@ -16,6 +16,7 @@ import { UserDataContext } from "@/app/_context/UserDataContext";
 import { db } from "@/config"; // Import the database client from the configuration
 import { Users } from "@/config/schema"; // Import the schema for RedesignedAI Room Images
 import { eq } from "drizzle-orm";
+import { Sparkles } from "lucide-react";
 
 interface FormData {
 	image?: File;
@@ -142,15 +143,15 @@ function AiRedesign() {
 	};*/
 
 	return (
-		<div>
+		<div className="mb-52">
 			{/* Heading text */}
-			<div className="pt-40">
+			<div className="pt-40 ">
 				<h2 className="text-5xl font-bold text-colors-custom-purple text-center ">
 					Never let Creative Block Stop you{" "}
 				</h2>
 				<h2 className="text-4xl font-bold text-colors-custom-purple text-center mb-5"></h2>
 				<p className="text-colors-custom-purple text-center text-xl">
-					Upload Pic, Select a Style and see your new Redesigns{" "}
+					Upload Pic, Select a Style and Manifest your new Redesigns{" "}
 				</p>
 			</div>
 			<div className="grid grid-cols-1 md:grid-cols-2 mt-20 gap-20">
@@ -179,17 +180,11 @@ function AiRedesign() {
 					{/* Button to Generate AI Image */}
 					<div className="flex justify-end relative pt-3 max-w-2xl">
 						<Button
-							className="bg-colors-custom-purple mt-6 rounded-none px-7 py-4 mb-52"
+							className="bg-colors-custom-purple mt-10 gap-5 px-7 py-5 shadow-xl hover:shadow-3xl transition-shadow"
 							onClick={ManifestAiImage}
 						>
-							<Image
-								src="/manifest.svg"
-								alt="credits"
-								width={25}
-								height={25}
-								className="inline-block mr-1"
-							/>
-							<span className="tracking-wider">Generate Re-Designed Room</span>
+							<Sparkles className="animate-pulse" />
+							<span>GENERATE  RE-DESIGNED  ROOM</span>
 						</Button>
 						
 						{userDetail ? (
@@ -198,7 +193,7 @@ function AiRedesign() {
 									userDetail.subscriptionType === "free"
 										? "text-colors-custom-pink"
 										: "text-colors-custom-lightpurple"
-								} absolute top-0 right-0 text-base pt-1 pr-2`}
+								} absolute top-0 right-0 text-base pt-1 pr-2 mb-5`}
 							>
 								* {userDetail.subscriptionType === "free" 
 									? <><strong>Free</strong> User</> 
