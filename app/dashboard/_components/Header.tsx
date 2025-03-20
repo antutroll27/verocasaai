@@ -28,6 +28,7 @@ function Header() {
     { href: "/dashboard", label: "Dashboard" },
     { href: "/dashboard/ai-redesign", label: "Re-Design your Room" },
     { href: "/dashboard/purchase-credits", label: "Purchase Plans" },
+    { href: "/blog", label: "Blog" },
   ];
 
   return (
