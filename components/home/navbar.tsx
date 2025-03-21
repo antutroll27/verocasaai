@@ -40,6 +40,12 @@ export default function Navbar() {
 					>
 						Pricing
 					</a>
+					<a
+						href="/blog"
+						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+					>
+						Blog
+					</a>
 				</div>
 
 				{/* Desktop Buttons */}
@@ -152,6 +158,12 @@ export default function Navbar() {
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
 					Pricing
+				</a>
+				<a
+					href="/blog"
+					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+				>
+					Blog
 				</a>
 				<a
 					href="/dashboard"
