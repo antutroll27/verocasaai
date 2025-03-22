@@ -11,6 +11,7 @@ import BlogList from '@/components/blog/BlogList';
 import CategoryList from '@/components/blog/CategoryList';
 import PopularPosts from '@/components/blog/PopularPosts';
 import Link from 'next/link';
+import { Sparkles } from 'lucide-react';
 
 export default function BlogPage() {
   const router = useRouter();
@@ -200,8 +201,9 @@ export default function BlogPage() {
               </p>
               <Link 
                 href="/dashboard/ai-redesign"
-                className="inline-block bg-colors-custom-purple text-white px-4 py-2 rounded-md hover:bg-colors-custom-purple/80 transition-colors"
+                className="inline-block bg-colors-custom-purple text-white px-4 py-2 rounded-md hover:bg-colors-custom-purple/80 transition-colors flex items-center gap-5 justify-center"
               >
+                <Sparkles className="animate-pulse" size={16} />
                 Try It Now
               </Link>
             </div>
