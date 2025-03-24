@@ -12,8 +12,13 @@ import CategoryList from '@/components/blog/CategoryList';
 import PopularPosts from '@/components/blog/PopularPosts';
 import Link from 'next/link';
 import { Sparkles } from 'lucide-react';
+import { useUser } from '@clerk/nextjs';
+import Header from '@/app/dashboard/_components/Header';
 
 export default function BlogPage() {
+
+  const { isLoaded, isSignedIn, user } = useUser();
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const categorySlug = searchParams?.get('category');
@@ -113,7 +118,19 @@ export default function BlogPage() {
   
   return (
     <div>
-      <Navbar />
+       {/* Conditionally render the header based on user authentication */}
+       {isLoaded && isSignedIn ? (
+        <div className="fixed top-0 w-full z-50 bg-colors-custom-pastel">
+          <Header /> {/* Correct component name */}
+        </div>
+      ) : (
+        <Navbar />
+      )}
+
+        {/* Add padding top only when the dashboard header is shown */}
+        <div className={isLoaded && isSignedIn ? "pt-24" : ""}>
+        {/* Rest of your blog page content */}
+      </div>
       
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
