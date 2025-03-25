@@ -13,9 +13,22 @@ import CookiebotScript from "./components/CookiebotScript";
 export const metadata: Metadata = {
 	title: "VerocasaAI - AI-Powered Interior Design",
 	description: "Transform your space with AI-powered interior redesigns.",
+	metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://verocasaai.com"),
 	icons: {
 		icon: "/favicon.ico",
 	  },
+	  openGraph: {
+		title: "VerocasaAI - AI-Powered Interior Design",
+		description: "Transform your space with AI-powered interior redesigns.",
+		url: "https://verocasaai.com",
+		images: ["/og-image.jpg"],
+	  },
+	  twitter: {
+		card: "summary_large_image",
+		title: "VerocasaAI",
+		description: "Transform your space with AI-powered interior redesigns.",
+		images: ["/twitter-image.jpg"],
+	  }, 
 };
 
 const spcgrtsk = Space_Grotesk({ 
@@ -31,8 +44,17 @@ export default function RootLayout({
 		<ClerkProvider >
 			<html lang="en">
 				<head>
-				
-					<CookiebotScript /> 
+				    
+					{/* <CookiebotScript /> */}
+					<script type="application/ld+json" dangerouslySetInnerHTML={{
+						__html: JSON.stringify({
+							"@context": "https://schema.org",
+							"@type": "Service",
+							serviceType: "AI Interior Design",
+							provider: { "@type": "Organization", name: "VerocasaAI" },
+							description: "Transform your space with AI-powered interior redesigns.",
+						})
+					}} />
 				</head>
 				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
 					
