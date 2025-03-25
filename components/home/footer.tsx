@@ -68,7 +68,7 @@ export default function FooterSection() {
 								</defs>
 							</svg>
 						</a>
-						<a href="#" className="hover:text-blue-200">
+						<a href="https://www.linkedin.com/company/verocasa-ai/" className="hover:text-blue-200">
 							<svg
 								width="15"
 								height="15"
