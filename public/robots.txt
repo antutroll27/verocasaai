@@ -1,0 +1,46 @@
+# robots.txt for VeroCasaAI (https://verocasaai.com)
+
+# Allow all crawlers access by default, then disallow specific paths
+User-agent: *
+
+# Disallow access to backend API routes
+Disallow: /api/
+
+# Disallow access to the authenticated dashboard area
+Disallow: /dashboard/
+
+# Disallow access to the Sanity Studio CMS interface
+Disallow: /studio/
+
+# Disallow access to Clerk authentication pages (low SEO value)
+Disallow: /sign-in/
+Disallow: /sign-up/
+
+# Allow crawlers to access necessary Next.js static files (standard practice allows necessary JS/CSS)
+# Disallowing /_next/ completely can sometimes hinder rendering previews,
+# but generally it's safe to disallow the directory if not needed for rendering tests.
+# If you experience issues with Google rendering pages correctly, you might need
+# to allow specific resources within /_next/static/ instead.
+Disallow: /_next/
+
+# Allow access to the sitemap.xml file itself (if needed, though Sitemap directive is preferred)
+# Allow: /sitemap.xml
+
+# Sitemap location (Important: Use your actual production domain)
+Sitemap: https://verocasaai.com/sitemap.xml
+
+# --- Optional: Specific rules for Google ---
+# You could add rules specifically for Googlebot if needed, but the '*' rules cover it.
+# User-agent: Googlebot
+# Allow: ... (specific Google allowances if needed)
+
+# --- Optional: Rules for Ad Bots ---
+# Allow Google Ads bot if you run ads (ads.txt suggests you might)
+User-agent: AdsBot-Google
+Allow: /
+
+# Disallow other bots if desired (example)
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
