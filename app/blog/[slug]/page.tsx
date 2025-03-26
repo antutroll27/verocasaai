@@ -77,6 +77,20 @@ export default function BlogPostPage() {
     return (
       <div>
         <Navbar />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BlogPosting",
+              headline: post?.title,
+              image: post?.mainImage ? getSanityImageUrl(post.mainImage) : "",
+              datePublished: post?.publishedAt,
+              author: { "@type": "Person", name: post?.author || "Default Author" },
+              description: post?.excerpt,
+            }),
+          }}
+        />
         <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
           <div className="flex justify-center items-center">
             <div className="text-center">
@@ -121,11 +135,29 @@ export default function BlogPostPage() {
     return null;
   }
   
-  const imageUrl = post.mainImage ? getSanityImageUrl(post.mainImage) : '';
+  // Use non-null assertion to tell TypeScript that post won't be null beyond this point
+  const post_ = post as Post;  // TypeScript will treat post_ as definitely not null
+  
+  const imageUrl = post_.mainImage ? getSanityImageUrl(post_.mainImage) : '';
   
   return (
     <div>
       <Navbar />
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post_.title,
+            image: imageUrl,
+            datePublished: post_.publishedAt,
+            author: { "@type": "Person", name: typeof post_.author === 'string' ? post_.author : post_.author?.name || "Default Author" },
+            description: post_.excerpt || "",
+          }),
+        }}
+      />
       
       <div className="max-w-4xl mx-auto px-6 py-16">
         {/* Back to blog link */}
@@ -155,19 +187,19 @@ export default function BlogPostPage() {
         {/* Blog post header */}
         <header className="mb-10">
           <h1 className="text-4xl md:text-5xl font-bold text-colors-custom-purple mb-6">
-            {post.title}
+            {post_.title}
           </h1>
           
           <div className="flex items-center text-gray-600 mb-6">
-            <span className="mr-4">By {typeof post.author === 'string' ? post.author : post.author?.name}</span>
-            {post.publishedAt && (
-              <span>{formatDate(post.publishedAt)}</span>
+            <span className="mr-4">By {typeof post_.author === 'string' ? post_.author : post_.author?.name}</span>
+            {post_.publishedAt && (
+              <span>{formatDate(post_.publishedAt)}</span>
             )}
           </div>
           
-          {post.categories && post.categories.length > 0 && (
+          {post_.categories && post_.categories.length > 0 && (
             <div className="flex flex-wrap gap-2 mb-6">
-              {post.categories.map((category, index) => (
+              {post_.categories.map((category, index) => (
                 <Link 
                   key={index}
                   href={`/blog?category=${typeof category === 'string' ? category.toLowerCase() : category.slug}`}
@@ -185,7 +217,7 @@ export default function BlogPostPage() {
           <div className="relative h-[400px] w-full mb-10 rounded-lg overflow-hidden">
             <Image
               src={imageUrl}
-              alt={post.title}
+              alt={post_.title}
               fill
               className="object-cover"
               priority
@@ -195,7 +227,7 @@ export default function BlogPostPage() {
         
         {/* Blog content */}
         <article className="prose prose-lg max-w-none prose-headings:text-colors-custom-purple prose-a:text-colors-custom-lightpurple">
-          <PortableTextRenderer content={post.body} />
+          <PortableTextRenderer content={post_.body} />
         </article>
         
         {/* Share buttons */}
@@ -205,7 +237,7 @@ export default function BlogPostPage() {
             <div className="flex flex-wrap gap-2">
               {/* Twitter */}
               <a 
-                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${typeof window !== 'undefined' ? window.location.origin : ''}/blog/${slug}`)}`}
+                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post_.title)}&url=${encodeURIComponent(`${typeof window !== 'undefined' ? window.location.origin : ''}/blog/${slug}`)}`}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-[#1DA1F2] text-white p-2 rounded-full hover:bg-opacity-80 transition-all"
@@ -237,13 +269,13 @@ export default function BlogPostPage() {
           <h3 className="text-2xl font-bold text-colors-custom-purple mb-4">About the Author</h3>
           <div className="flex flex-col md:flex-row gap-6 items-center md:items-start">
             <div className="w-24 h-24 rounded-full bg-colors-custom-purple flex items-center justify-center text-white text-2xl font-bold">
-              {typeof post.author === 'string' 
-                ? post.author.charAt(0) 
-                : post.author?.name.charAt(0) || 'A'}
+              {typeof post_.author === 'string' 
+                ? post_.author.charAt(0) 
+                : post_.author?.name.charAt(0) || 'A'}
             </div>
             <div>
               <h4 className="text-xl font-semibold text-colors-custom-purple mb-2">
-                {typeof post.author === 'string' ? post.author : post.author?.name}
+                {typeof post_.author === 'string' ? post_.author : post_.author?.name}
               </h4>
               <p className="text-gray-600">
                 Interior design enthusiast and contributor at VerocasaAI. Passionate about transforming spaces and helping people create their dream homes with the power of AI.

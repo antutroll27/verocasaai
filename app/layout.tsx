@@ -50,7 +50,7 @@ export default function RootLayout({
 						__html: JSON.stringify({
 							"@context": "https://schema.org",
 							"@type": "Service",
-							serviceType: "AI Interior Design",
+							serviceType: "AI Interior Room Design",
 							provider: { "@type": "Organization", name: "VerocasaAI" },
 							description: "Transform your space with AI-powered interior redesigns.",
 						})
