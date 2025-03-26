@@ -10,6 +10,8 @@ import FooterSection from '@/components/home/footer';
 import { client, blogQueries, getSanityImageUrl } from '@/lib/sanity';
 import PortableTextRenderer from '@/components/blog/PortableTextRenderer';
 import { Post, PostPreview } from '@/types/sanity';
+import { useUser } from '@clerk/nextjs';
+import Header from '@/app/dashboard/_components/Header';
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -24,7 +26,8 @@ export default function BlogPostPage() {
   const params = useParams();
   const router = useRouter();
   const slug = params?.slug as string;
-  
+
+  const { isLoaded, isSignedIn, user } = useUser();
   const [post, setPost] = useState<Post | null>(null);
   const [relatedPosts, setRelatedPosts] = useState<PostPreview[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -76,7 +79,19 @@ export default function BlogPostPage() {
   if (isLoading) {
     return (
       <div>
+        {/* Conditionally render the header based on user authentication */}
+       {isLoaded && isSignedIn ? (
+        <div className="fixed top-0 w-full z-50 bg-colors-custom-pastel">
+          <Header /> {/* Correct component name */}
+        </div>
+      ) : (
         <Navbar />
+      )}
+
+        {/* Add padding top only when the dashboard header is shown */}
+      <div className={isLoaded && isSignedIn ? "pt-24" : ""}>
+        {/* Rest of your blog page content */}
+      </div>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -142,7 +157,19 @@ export default function BlogPostPage() {
   
   return (
     <div>
-      <Navbar />
+      {/* Conditionally render the header based on user authentication */}
+      {isLoaded && isSignedIn ? (
+        <div className="fixed top-0 w-full z-50 bg-colors-custom-pastel">
+          <Header /> {/* Correct component name */}
+        </div>
+      ) : (
+        <Navbar />
+      )}
+
+      {/* Add padding top only when the dashboard header is shown */}
+      <div className={isLoaded && isSignedIn ? "pt-24" : ""}>
+        {/* Rest of your blog page content */}
+      </div>
       
       <script
         type="application/ld+json"
