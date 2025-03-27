@@ -44,8 +44,8 @@ export default function RootLayout({
 		<ClerkProvider >
 			<html lang="en">
 				<head>
-				    
 					<CookiebotScript /> 
+					<meta name="monetag" content="62ac71454f9e16becafd494bad988175"></meta>
 					<script type="application/ld+json" dangerouslySetInnerHTML={{
 						__html: JSON.stringify({
 							"@context": "https://schema.org",
