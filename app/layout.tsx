@@ -46,7 +46,7 @@ export default function RootLayout({
 				<head>
 					<CookiebotScript /> 
 					<meta name="monetag" content="62ac71454f9e16becafd494bad988175"></meta>
-					<script src="https://kulroakonsu.net/88/tag.min.js" data-zone="139191" async data-cfasync="false"></script>
+					
 					<script type="application/ld+json" dangerouslySetInnerHTML={{
 						__html: JSON.stringify({
 							"@context": "https://schema.org",
