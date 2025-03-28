@@ -4,6 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { UserDataContext } from "./_context/UserDataContext";
 import { UserDetailType } from "@/types";
+import { setUserProperties } from "@/lib/analytics";
 
 function Provider({ children }: PropsWithChildren) {
 	const [userDetail, setUserDetail] = useState<UserDetailType | null>(null);
@@ -22,7 +23,7 @@ function Provider({ children }: PropsWithChildren) {
 	const VerifyUser = async () => {
 		try {
 			// Format user data before sending
-			const userData = {
+			const clerkUserData = {
 				fullName: user?.fullName,
 				primaryEmailAddress: {
 					emailAddress: user?.primaryEmailAddress?.emailAddress,
@@ -31,9 +32,21 @@ function Provider({ children }: PropsWithChildren) {
 			};
 
 			const dataResult = await axios.post("/api/verify-user", {
-				user: userData,
+				user: clerkUserData,
 			});
-			setUserDetail(dataResult.data.result);
+			const userDetailData = dataResult.data.result;
+			setUserDetail(userDetailData);
+			
+			// Identify user in Amplitude when they log in
+			if (user?.id && userDetailData) {
+				setUserProperties(user.id, {
+					email: user.primaryEmailAddress?.emailAddress,
+					name: user.fullName,
+					subscriptionTier: userDetailData.subscriptionTier || "FREE",
+					signUpDate: user.createdAt
+				});
+			}
+			
 			setIsLoading(false);
 		} catch (error) {
 			console.error("Verify user error:", error);

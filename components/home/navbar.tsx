@@ -1,9 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
+import useAnalytics from "@/hooks/useAnalytics";
 
 export default function Navbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const { track } = useAnalytics();
 	return (
 		<nav className="py-4 bg-[#EFECEC]">
 			<div className="w-full lg:max-w-6xl mx-auto px-6 flex justify-between items-center">
@@ -53,6 +55,7 @@ export default function Navbar() {
 					<a
 						href="/dashboard"
 						className="bg-[#FC6736] text-white px-4 py-2 rounded-lg"
+						onClick={() => track("Sign Up", { location: "navbar", device: "desktop" })}
 					>
 						Sign Up
 					</a>
@@ -61,6 +64,7 @@ export default function Navbar() {
 						target="_blank"
 						rel="noopener noreferrer"
 						className="bg-[#FFB0B0] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
+						onClick={() => track("Button Click", { button: "Support Us", location: "navbar", device: "desktop" })}
 					>
 						<svg
 							width="16"
@@ -168,6 +172,7 @@ export default function Navbar() {
 				<a
 					href="/dashboard"
 					className="bg-[#FC6736] text-white px-4 py-1 rounded-lg text-center w-[130px]"
+					onClick={() => track("Sign Up", { location: "navbar", device: "mobile" })}
 				>
 					Sign Up
 				</a>
@@ -177,6 +182,7 @@ export default function Navbar() {
 					target="_blank"
 					rel="noopener noreferrer"
 					className="bg-[#FFB0B0] w-[130px] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
+					onClick={() => track("Button Click", { button: "Support Us", location: "navbar", device: "mobile" })}
 				>
 					<svg
 						width="16"

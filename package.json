@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@amplitude/analytics-browser": "^2.12.2",
     "@clerk/nextjs": "^6.5.0",
     "@lottiefiles/dotlottie-react": "^0.10.0",
     "@neondatabase/serverless": "^0.10.4",

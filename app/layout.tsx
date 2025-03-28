@@ -4,6 +4,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
 import CookiebotScript from "./components/CookiebotScript";
+import AmplitudeProvider from "./_context/AmplitudeProvider";
 
 
 // Define the metadata for the application, which includes the title and description.
@@ -44,7 +45,7 @@ export default function RootLayout({
 		<ClerkProvider >
 			<html lang="en">
 				<head>
-					<CookiebotScript /> 
+				<CookiebotScript /> 
 					<meta name="monetag" content="62ac71454f9e16becafd494bad988175"></meta>
 					
 					<script type="application/ld+json" dangerouslySetInnerHTML={{
@@ -59,7 +60,9 @@ export default function RootLayout({
 				</head>
 				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
 					
-					<Provider>{children}</Provider>
+					<Provider>
+						<AmplitudeProvider>{children}</AmplitudeProvider>
+					</Provider>
 				</body>
 			</html>
 		</ClerkProvider>
