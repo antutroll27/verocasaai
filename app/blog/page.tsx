@@ -135,7 +135,7 @@ export default function BlogPage() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-colors-custom-purple mb-7 mt-6" style={{ fontFamily: 'Tomatoes, sans-serif' }}>
-          Articoli del blog di VeroCasa
+          VeroCasa Blogs– Your Guide to Design,AI and much more 
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
            From trending décor to advanced AI techniques, we blend style with innovation to help you create spaces that truly inspire.
