@@ -12,6 +12,7 @@ import PortableTextRenderer from '@/components/blog/PortableTextRenderer';
 import { Post, PostPreview } from '@/types/sanity';
 import { useUser } from '@clerk/nextjs';
 import Header from '@/app/dashboard/_components/Header';
+import Script from 'next/script';
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
@@ -79,6 +80,7 @@ export default function BlogPostPage() {
   if (isLoading) {
     return (
       <div>
+
         {/* Conditionally render the header based on user authentication */}
        {isLoaded && isSignedIn ? (
         <div className="fixed top-0 w-full z-50 bg-colors-custom-pastel">
@@ -122,6 +124,7 @@ export default function BlogPostPage() {
   if (error) {
     return (
       <div>
+
         <Navbar />
         <div className="max-w-4xl mx-auto px-6 py-32 min-h-screen">
           <div className="text-center">
@@ -155,8 +158,12 @@ export default function BlogPostPage() {
   
   const imageUrl = post_.mainImage ? getSanityImageUrl(post_.mainImage) : '';
   
+
+  
   return (
     <div>
+
+      
       {/* Conditionally render the header based on user authentication */}
       {isLoaded && isSignedIn ? (
         <div className="fixed top-0 w-full z-50 bg-colors-custom-pastel">
