@@ -19,10 +19,7 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
   
   if (!post) {
-    return {
-      title: 'Post Not Found | VerocasaAI',
-      description: 'Sorry, the blog post you\'re looking for doesn\'t exist.',
-    };
+    throw new Error(`Post not found for slug: ${params.slug}`);
   }
   
   // Get the base URL from environment or default to production URL
