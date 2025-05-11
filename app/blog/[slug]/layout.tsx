@@ -1,14 +1,8 @@
 import React from 'react';
 import type { Metadata } from 'next';
 
-// Static metadata that will apply to all blog posts
-export const metadata: Metadata = {
-  title: 'VerocasaAI Blog',
-  description: 'Explore the latest in AI-powered interior design and innovation',
-  openGraph: {
-    type: 'article',
-  },
-};
+// We'll let the page.tsx define metadata dynamically for each blog post
+// This allows each blog post to have its own unique title, description, and image
 
 export default function BlogPostLayout({
   children,
