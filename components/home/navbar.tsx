@@ -12,7 +12,7 @@ export default function Navbar() {
 				{/* Logo */}
 				<div className="flex items-center space-x-2">
 					<a className="block" href="">
-						<img className="w-[223px]" src="/img/logo.png" alt="Logo" />
+						<img className="w-[223px]" src="/verocasalogowhitehouse.png" alt="Logo" />
 					</a>
 				</div>
 
