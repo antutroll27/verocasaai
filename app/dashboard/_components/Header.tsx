@@ -25,39 +25,40 @@ function Header() {
   }, [isLoading]);
 
   const navLinks = [
-    { href: "/dashboard", label: "Dashboard" },
-    { href: "/dashboard/ai-redesign", label: "Re-Design your Room" },
-    { href: "/dashboard/purchase-credits", label: "Purchase Plans" },
-    { href: "/blog", label: "Blog" },
+    { href: "/dashboard", label: "DASHBOARD" },
+    { href: "/dashboard/ai-redesign", label: "RE DESIGN YOUR ROOM" },
+    { href: "/dashboard/purchase-credits", label: "PURCHASE PLANS" },
+    { href: "/blog", label: "BLOG" },
   ];
 
   return (
     <nav className="w-full">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 md:py-6 
+      <div className="max-w-7xl mx-auto px-20 sm:px-5 lg:px-6 py-4 md:py-6 
 	  ">
-        <div className="flex justify-between items-center max-w-[95%] mx-auto w-full pt-20 ">
+        <div className="flex justify-between items-center max-w-[95%] mx-auto w-full pt-10 pl-0
+         ">
           {/* Logo */}
           <Image
             src="/verocasalogowhitehouse.png"
             alt="logo"
-            width={200}
-            height={200}
-            className="w-32 md:w-48 object-contain -ml-4"
+            width={220}
+            height={220}
+            className="w-25 md:w-48 object-contain -ml-10"
           />
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-10 ">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-colors-custom-purple text-base hover:opacity-80"
+                className="text-colors-custom-purple text-base px-4 font-light hover:font-semibold transition-all duration-200 "
               >
                 {link.label}
               </Link>
             ))}
             
-            <div className="flex gap-3 items-center bg-colors-white px-4 py-1 rounded-md">
+            <div className="flex gap-3 items-center bg-colors-white px-4 py-1 rounded-md ml-4">
               <h2
                 className={`font-bold text-sm md:text-base ${
                   subscriptionStatus === "free" ? "text-red-500" : "text-green-500"
@@ -67,7 +68,7 @@ function Header() {
               </h2>
             </div>
 
-            <div className="transform scale-125">
+            <div className="transform scale-125 ml-4">
               <UserButton />
             </div>
           </div>

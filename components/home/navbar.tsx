@@ -8,62 +8,62 @@ export default function Navbar() {
 	const { track } = useAnalytics();
 	return (
 		<nav className="py-4 bg-[#EFECEC] pt-10">
-			<div className="w-full lg:max-w-6xl mx-auto px-10 flex justify-between items-center">
+			<div className="w-full lg:max-w-6xl mx-auto px-45 flex justify-between items-center">
 				{/* Logo */}
-				<div className="flex items-center space-x-2">
-					<a className="block" href="">
-						<img className="w-[223px]" src="/verocasalogowhitehouse.png" alt="Logo" />
+				<div className="flex items-center space-x-5">
+					<a className="block " href="">
+						<img className="w-[200px]" src="/verocasalogowhitehouse.png" alt="Logo" />
 					</a>
 				</div>
 
 				{/* Desktop Menu */}
-				<div className="hidden lg:flex items-center space-x-14">
+				<div className="hidden lg:flex items-center space-x-12 mr-5">
 					<a
 						href="/"
-						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900 hover:font-semibold transition-all duration-200"
 					>
 						HOME
 					</a>
 					<a
 						href="#howtouse"
-						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900 hover:font-semibold transition-all duration-200"
 					>
 						USAGES
 					</a>
 					<a
 						href="#sample"
-						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900 hover:font-semibold transition-all duration-200"
 					>
 						SAMPLES
 					</a>
 					<a
 						href="#pricing"
-						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900 hover:font-semibold transition-all duration-200"
 					>
 						PRICING
 					</a>
 					<a
 						href="/blog"
-						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900 hover:font-semibold transition-all duration-200"
 					>
 						BLOG
 					</a>
 				</div>
 
 				{/* Desktop Buttons */}
-				<div className="hidden lg:flex space-x-5">
+				<div className="hidden lg:flex space-x-5 ml-5">
 					<a
 						href="/dashboard"
 						className="bg-[#FC6736] text-white px-4 py-2 rounded-lg"
 						onClick={() => track("Sign Up", { location: "navbar", device: "desktop" })}
 					>
-						Sign Up
+						SIGN UP
 					</a>
 					<a
 						href="https://ko-fi.com/verocasa"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="bg-[#FFB0B0] text-blue-900 px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
+						className="bg-[#FFB0B0] text-blue-900 px-7 py-2 rounded-lg text-sm font-medium hover:bg-[#FC6736] flex items-center space-x-1"
 						onClick={() => track("Button Click", { button: "Support Us", location: "navbar", device: "desktop" })}
 					>
 						<svg
@@ -83,7 +83,7 @@ export default function Navbar() {
 							/>
 						</svg>
 
-						<span>Support Us</span>
+						<span className="pl-2">SUPPORT US</span>
 					</a>
 				</div>
 
