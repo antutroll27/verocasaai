@@ -48,7 +48,7 @@ export default function PricePlansSection() {
 				<h2 className="text-white text-3xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
 					Pricing
 				</h2>
-				<p className="text-[#EFECEC] text-sm mb-12">
+				<p className="text-[#EFECEC] mb-12">
 					Why settle for ordinary? Our pricing plans bend, flex, and <br />{" "}
 					mould to your unique game plan.
 				</p>

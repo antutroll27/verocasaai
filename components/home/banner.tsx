@@ -12,7 +12,7 @@ export default function BannerSection() {
 				</h1>
 				<div className="flex flex-col flex-col-reverse xl:flex-row">
 					<div className="w-full lg:w-2/5 ml-0 lg:ml-32 mt-0 lg:mt-8">
-						<p className="text-[#0C2D57] text-sm mb-8 pr-0 lg:pr-10">
+						<p className="text-[#0C2D57] text-lg  mb-8 pr-0 lg:pr-10">
 							Bought a new forever place and you are looking forward to giving
 							it a <b>new design</b> or bored of your current{" "}
 							<b>room aesthetics ?</b> Not sure what <b>vibe</b> you are looking
@@ -20,7 +20,7 @@ export default function BannerSection() {
 						</p>
 						<Link
 							href="/dashboard/ai-redesign"
-							className="bg-[#0C2D57]  w-[207px] text-sm text-white px-4 py-3 hover:bg-opacity-80 flex items-center gap-3"
+							className="bg-[#0C2D57] inline-flex text-sm text-white px-8 py-3 hover:bg-opacity-80 items-center gap-3 rounded-md whitespace-nowrap"
 						>
 							<svg
 								width="16"

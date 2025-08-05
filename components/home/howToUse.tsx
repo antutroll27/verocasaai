@@ -33,7 +33,7 @@ export default function HowToUseSection() {
 				<h2 className="text-3xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
 					How to <span className="text-[#FC6736]">Use</span>
 				</h2>
-				<p className="text-[#0C2D57] text-sm mb-16">
+				<p className="text-[#0C2D57] text-lg mb-16">
 					Complex ideas, effortlessly transformed. Your dream room, just three
 					clicks away.
 					<br />
