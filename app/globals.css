@@ -11,6 +11,57 @@
   font-display: swap;
 }
 
+/* RM Mono Font Declarations */
+@font-face {
+  font-family: 'RM Mono';
+  src: url('/fonts/RMMono-Light.woff2') format('woff2'),
+       url('/fonts/RMMono-Light.woff') format('woff'),
+       url('/fonts/RMMono-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RM Mono';
+  src: url('/fonts/RMMono-Regular.woff2') format('woff2'),
+       url('/fonts/RMMono-Regular.woff') format('woff'),
+       url('/fonts/RMMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RM Mono';
+  src: url('/fonts/RMMono-SemiBold.woff2') format('woff2'),
+       url('/fonts/RMMono-SemiBold.woff') format('woff'),
+       url('/fonts/RMMono-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RM Mono';
+  src: url('/fonts/RMMono-Bold.woff2') format('woff2'),
+       url('/fonts/RMMono-Bold.woff') format('woff'),
+       url('/fonts/RMMono-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'RM Mono';
+  src: url('/fonts/RMMono-Black.woff2') format('woff2'),
+       url('/fonts/RMMono-Black.woff') format('woff'),
+       url('/fonts/RMMono-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }

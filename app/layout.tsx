@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
@@ -32,9 +31,7 @@ export const metadata: Metadata = {
 	  }, 
 };
 
-const spcgrtsk = Space_Grotesk({ 
-	subsets: ["latin"],
-});
+// RM Mono is loaded via CSS @font-face declarations
 
 export default function RootLayout({   
 	children,
@@ -58,7 +55,7 @@ export default function RootLayout({
 						})
 					}} />
 				</head>
-				<body className={`${spcgrtsk.className} bg-colors-custom-pastel`} suppressHydrationWarning>
+				<body className="font-['RM_Mono'] bg-colors-custom-pastel" suppressHydrationWarning>
 					
 					<Provider>
 						<AmplitudeProvider>{children}</AmplitudeProvider>

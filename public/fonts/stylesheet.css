@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'RM Mono';
+    src: url('RMMono-Light.eot');
+    src: local('RM Mono Light'), local('RMMono-Light'),
+        url('RMMono-Light.eot?#iefix') format('embedded-opentype'),
+        url('RMMono-Light.woff2') format('woff2'),
+        url('RMMono-Light.woff') format('woff'),
+        url('RMMono-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RM Mono';
+    src: url('RMMono-Regular.eot');
+    src: local('RM Mono Regular'), local('RMMono-Regular'),
+        url('RMMono-Regular.eot?#iefix') format('embedded-opentype'),
+        url('RMMono-Regular.woff2') format('woff2'),
+        url('RMMono-Regular.woff') format('woff'),
+        url('RMMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RM Mono';
+    src: url('RMMono-Black.eot');
+    src: local('RM Mono Black'), local('RMMono-Black'),
+        url('RMMono-Black.eot?#iefix') format('embedded-opentype'),
+        url('RMMono-Black.woff2') format('woff2'),
+        url('RMMono-Black.woff') format('woff'),
+        url('RMMono-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RM Mono';
+    src: url('RMMono-SemiBold.eot');
+    src: local('RM Mono SemiBold'), local('RMMono-SemiBold'),
+        url('RMMono-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('RMMono-SemiBold.woff2') format('woff2'),
+        url('RMMono-SemiBold.woff') format('woff'),
+        url('RMMono-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'RM Mono';
+    src: url('RMMono-Bold.eot');
+    src: local('RM Mono Bold'), local('RMMono-Bold'),
+        url('RMMono-Bold.eot?#iefix') format('embedded-opentype'),
+        url('RMMono-Bold.woff2') format('woff2'),
+        url('RMMono-Bold.woff') format('woff'),
+        url('RMMono-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

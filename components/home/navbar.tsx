@@ -7,8 +7,8 @@ export default function Navbar() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { track } = useAnalytics();
 	return (
-		<nav className="py-4 bg-[#EFECEC]">
-			<div className="w-full lg:max-w-6xl mx-auto px-6 flex justify-between items-center">
+		<nav className="py-4 bg-[#EFECEC] pt-10">
+			<div className="w-full lg:max-w-6xl mx-auto px-10 flex justify-between items-center">
 				{/* Logo */}
 				<div className="flex items-center space-x-2">
 					<a className="block" href="">
@@ -20,33 +20,33 @@ export default function Navbar() {
 				<div className="hidden lg:flex items-center space-x-14">
 					<a
 						href="/"
-						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
 					>
-						Home
+						HOME
 					</a>
 					<a
 						href="#howtouse"
-						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
 					>
-						Usages
+						USAGES
 					</a>
 					<a
 						href="#sample"
-						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
 					>
-						Samples
+						SAMPLES
 					</a>
 					<a
 						href="#pricing"
 						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 					>
-						Pricing
+						PRICING
 					</a>
 					<a
 						href="/blog"
-						className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
+						className="text-base font-light text-[#0C2D57] hover:text-blue-900"
 					>
-						Blog
+						BLOG
 					</a>
 				</div>
 

@@ -35,7 +35,7 @@ function Header() {
     <nav className="w-full">
       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6 py-4 md:py-6 
 	  ">
-        <div className="flex justify-between items-center max-w-[95%] mx-auto w-full pt-10 ">
+        <div className="flex justify-between items-center max-w-[95%] mx-auto w-full pt-20 ">
           {/* Logo */}
           <Image
             src="/verocasalogowhitehouse.png"
