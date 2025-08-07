@@ -5,14 +5,14 @@ export default function BannerSection() {
 	return (
 		<section className="pt-20 sm:pb-28 pb-16 bg-[#EFECEC]">
 			<div className="w-full lg:max-w-6xl mx-auto px-6 ">
-				<h1 className="text-center text-5xl lg:text-[120px] lg:leading-[153px] font-bold text-[#0C2D57] mb-8">
-					Transform & Remodel your
+				<h1 className="text-center text-5xl lg:text-[120px] lg:leading-[153px] font-bold text-[#0C2D57] mb-8 ">
+					TRANSFORM & REIMAGINE YOUR
 					<br />
-					Rooms in a Few <span className="text-[#FC6736]">Clicks</span>
+					ROOMS IN A FEW <span className="text-[#FC6736]">CLICKS</span>
 				</h1>
 				<div className="flex flex-col flex-col-reverse xl:flex-row">
-					<div className="w-full lg:w-2/5 ml-0 lg:ml-32 mt-0 lg:mt-8">
-						<p className="text-[#0C2D57] text-lg  mb-8 pr-0 lg:pr-10">
+					<div className="w-full lg:w-3/5 ml-0 lg:ml-32 mt-0 lg:mt-8 ">
+						<p className="text-[#0C2D57] text-xl font-light mb-12 pr-0 lg:pr-10">
 							Bought a new forever place and you are looking forward to giving
 							it a <b>new design</b> or bored of your current{" "}
 							<b>room aesthetics ?</b> Not sure what <b>vibe</b> you are looking
@@ -20,7 +20,7 @@ export default function BannerSection() {
 						</p>
 						<Link
 							href="/dashboard/ai-redesign"
-							className="bg-[#0C2D57] inline-flex text-sm text-white px-8 py-3 hover:bg-opacity-80 items-center gap-3 rounded-md whitespace-nowrap"
+							className="bg-[#0C2D57] inline-flex text-medium text-white px-8 py-3 hover:bg-opacity-80 items-center gap-3 rounded-md whitespace-nowrap"
 						>
 							<svg
 								width="16"
