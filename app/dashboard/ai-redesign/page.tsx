@@ -36,7 +36,7 @@ function AiRedesign() {
 	const [formData, setFormData] = useState<FormData>({});
 	const [loading, setLoading] = useState(false); // Loading state for async operations
 	const [AIOutputImage, setAIOutputImage] = useState<string | undefined>(); // State to hold AI generated image
-	const [output, setOutput] = useState(); // State for output (not used in the provided code)
+	// Removed unused output state
 	const [outputImageDialog, setOutputImageDialog] = useState(false); // Control dialog visibility
 	const [beforeImage, setBeforeImage] = useState<string | undefined>(); // State for the uploaded image URL
 

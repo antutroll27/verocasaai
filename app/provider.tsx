@@ -12,7 +12,6 @@ function Provider({ children }: PropsWithChildren) {
 	const { user } = useUser();
 
 	useEffect(() => {
-		console.log({ user });
 		if (user) {
 			VerifyUser();
 		} else {

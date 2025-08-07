@@ -145,8 +145,7 @@ async function convertToBase64(imageUrl: string): Promise<string> {
     console.error('Base64 conversion error:', error);
     throw new Error('Failed to convert image to base64');
   }
-}
- 
+} 
 export async function POST(req: Request) {
   try {
     // Input validation
@@ -213,3 +212,4 @@ export async function POST(req: Request) {
 }
 
 */
+
