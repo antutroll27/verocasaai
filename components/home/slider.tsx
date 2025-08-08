@@ -10,7 +10,7 @@ export default function SliderSection() {
 		<section className="pt-28 sm:pb-64 pb-28 bg-[#FFB0B0]" id="sample">
 			<div className="w-full lg:max-w-6xl mx-auto px-6">
 				<h2 className="text-[#0C2D57] text-3xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
-					Before vs After <br /> Examples
+					BEFORE <span className="text-[#FC6736]">VS</span> AFTER <br /> EXAMPLES
 				</h2>
 				<p className="text-[#0C2D57] text-lg f mb-20">
 					"Don't be afraid to give up the good to go for the great." – John D.

@@ -30,8 +30,8 @@ export default function HowToUseSection() {
 	return (
 		<section className="pt-20 sm:pb-56 pb-28 bg-[#EFECEC]" id="howtouse">
 			<div className="w-full lg:max-w-6xl mx-auto px-6">
-				<h2 className="text-3xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
-					How to <span className="text-[#FC6736]">Use</span>
+				<h2 className="text-5xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
+					HOW TO <span className="text-[#FC6736]">USE</span>
 				</h2>
 				<p className="text-[#0C2D57] text-lg mb-16">
 					Complex ideas, effortlessly transformed. Your dream room, just three

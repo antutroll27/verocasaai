@@ -46,7 +46,7 @@ export default function PricePlansSection() {
 		<section className="pb-32 pt-28 bg-[#FC6736]" id="pricing">
 			<div className="w-full lg:max-w-6xl mx-auto px-6 ">
 				<h2 className="text-white text-3xl lg:text-[64px] lg:leading-[81px] font-bold mb-7">
-					Pricing
+					PRICING
 				</h2>
 				<p className="text-[#EFECEC] mb-12">
 					Why settle for ordinary? Our pricing plans bend, flex, and <br />{" "}
