@@ -23,7 +23,7 @@ export async function generateMetadata(
   }
   
   // Get the base URL from environment or default to production URL
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://verocasaai.com';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://verocasaai.com';
   
   // Prepare OG image URL - use the generated OpenGraph image (must include extension)
   const ogImageUrl = `${baseUrl}/blog/${params.slug}/opengraph-image.png`;
@@ -78,6 +78,19 @@ export async function generateMetadata(
       description: excerpt,
       images: [ogImageUrl],
       creator: '@verocasaai',
+      site: '@verocasaai',
+    },
+    // Additional meta tags for better social sharing
+    other: {
+      'og:image:width': '1200',
+      'og:image:height': '630',
+      'twitter:image:src': ogImageUrl,
+      'twitter:image:width': '1200',
+      'twitter:image:height': '630',
+      'article:author': typeof post.author === 'string' ? post.author : post.author?.name || 'VerocasaAI',
+      'article:published_time': post.publishedAt,
+      'article:section': 'Interior Design',
+      'fb:app_id': process.env.FACEBOOK_APP_ID || '',
     },
   };
 }
