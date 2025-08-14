@@ -11,7 +11,7 @@ export default function Navbar() {
 			<div className="w-full lg:max-w-6xl mx-auto px-45 flex justify-between items-center">
 				{/* Logo */}
 				<div className="flex items-center space-x-5">
-					<a className="block " href="">
+					<a className="block ml-5 lg:ml-0" href="">
 						<img className="w-[200px]" src="/verocasalogowhitehouse.png" alt="Logo" />
 					</a>
 				</div>
@@ -137,44 +137,44 @@ export default function Navbar() {
 			<div
 				className={`mobile-menu ${
 					mobileMenuOpen ? "" : "hidden"
-				} lg:hidden flex flex-col space-y-4 px-6 pb-4 mt-5`}
+				} lg:hidden flex flex-col space-y-4 px-8 pb-4 mt-5 `}
 			>
 				<a
 					href="/"
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
-					Home
+					HOME
 				</a>
 				<a
 					href="#howtouse"
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
-					Usages
+					USAGES
 				</a>
 				<a
 					href="#sample"
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
-					Samples
+					SAMPLES
 				</a>
 				<a
 					href="#pricing"
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
-					Pricing
+					PRICING
 				</a>
 				<a
 					href="/blog"
 					className="text-sm font-light text-[#0C2D57] hover:text-blue-900"
 				>
-					Blog
+					BLOG
 				</a>
 				<a
 					href="/dashboard"
 					className="bg-[#FC6736] text-white px-4 py-1 rounded-lg text-center w-[130px]"
 					onClick={() => track("Sign Up", { location: "navbar", device: "mobile" })}
 				>
-					Sign Up
+					SIGN UP
 				</a>
 				{/* Support Us button - Links to Ko-fi donation page */}
 				<a
